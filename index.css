@@ -6,3 +6,57 @@ div#sel_eta {
     align-items: center;
     text-align: center;
 }
+
+div#confModular {
+    align-items: center;
+    text-align: center;
+}
+
+h2#h2flocMod {
+    text-align: center;
+    color: blue;
+}
+
+input#nflocmod {
+    background-color: lightblue;
+    width: 100px;
+}
+
+input#nflocdiamod {
+    width: 100px;
+}
+input#nflochmod {
+    width: 100px;
+}
+
+h2#h2DecMod {
+    text-align: center;
+    color: blue;
+}
+
+input#ndecmod {
+    width: 100px;
+}
+
+input#ndecdiamod {
+    width: 100px;
+}
+input#ndechmod {
+    width: 100px;
+}
+
+
+div#confTorrezan {
+    align-items: center;
+    text-align: center;
+}
+
+div#confOutros {
+    align-items: center;
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    color: blue;
+}

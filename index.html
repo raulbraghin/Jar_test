@@ -23,13 +23,64 @@
 
     <p><input type="button" value="Gravar" onclick="SalvaTipoETA()"></p>
     
+<div id="confModular" style="display: none;">
+
+    <h2 id="h2flocMod">Floculadores</h2>
+
+    <p>
+        Número de Floculadores:
+        <input type="number" name="nflocmod" id="nflocmod" min="0">
+    </p>
+
+    <p>
+        Diâmetro dos Floculadores:
+        <input type="number" name="nflocdiamod" id="nflocdiamod"> metros
+    </p>
+
+    <p>
+        Altura dos Floculadores:
+        <input type="number" name="nflochmod" id="nflochmod"> metros
+    </p>
+
+<br>
+
+    <h2 id="h2DecMod">Decantadores</h2>
+
+    <p>
+        Número de decantadores e filtros:
+        <input type="number" name="ndecmod" id="ndecmod" min="0">
+    </p>
+
+    <p>
+        Diâmetro dos Decantadores:
+        <input type="number" name="ndecdiamod" id="ndecdiamod"> metros
+    </p>
+
+    <p>
+        Altura dos Decantadores:
+        <input type="number" name="ndechmod" id="ndechmod"> metros
+    </p>
+
+    <p>
+        <input type="button" value="Gravar" onclick="CalcularVolModular()">
+    </p>
+
+</div>
+
+<div id="confTorrezan" style="display: none;">
+Minha div Torrezan
+
+</div>
 
 
+<div id="confOutros" style="display: none;">
+Minha div Outros
+</div>
 
 
-
-
-
+<footer>
+    <h2>Automação RJOS</h2>
+</footer>
     <script src="jartest.js"></script>
 </body>
 </html>
