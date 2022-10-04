@@ -15,7 +15,7 @@
     <div id="sel_eta">
         <h3>Selecione o tipo de Cálculo</h3>
 
-        <input type="radio" name="selecaodos" id="volume" checked>
+        <input type="radio" name="selecaodos" id="volume">
         <label for="volume">Calculo de dosagem por volume</label>
         <input type="radio" name="selecaodos" id="concentracao">
         <label for="concentracao">Calculo de dosagem por concentração</label>
@@ -28,37 +28,37 @@
 
        <p>
         Vazão da ETA:
-        <input type="number" name="vazao" id="vazao" min="0"> L/s
+        <input type="number" name="vazao" id="vazaovol" min="0"> L/s
        </p>
 
         <br>
 
         <p>
             Dosagem de PAC:
-            <input type="number" name="dosPAC" id="dosPAC" min="0"> ml/min
+            <input type="number" name="dosPAC" id="dosPACvol" min="0"> ml/min
 
         </p>
 
         <p>
             Dosagem de Hipoclorito Pre:
-            <input type="number" name="dosHIPO" id="dosHIPO" min="0"> ml/min
+            <input type="number" name="dosHIPO" id="dosHIPOvol" min="0"> ml/min
 
         </p>
 
         <p>
             Dosagem de Alcalinizante:
-            <input type="number" name="dosALC" id="dosALC" min="0"> ml/min
+            <input type="number" name="dosALC" id="dosALCvol" min="0"> ml/min
 
         </p>
 
         <p>
             Dosagem de Ácido Fluorsilíssico:
-            <input type="number" name="dosFLU" id="dosFLU" min="0"> ml/min
+            <input type="number" name="dosFLU" id="dosFLUvol" min="0"> ml/min
 
         </p>
 
         <p>
-            <input type="button" value="Gravar" onclick="Calculo()">
+            <input type="button" value="Calcular Dosagem" onclick="Calculo()">
         </p>
 
     </div>
@@ -67,43 +67,58 @@
 
         <p>
          Vazão da ETA:
-         <input type="number" name="vazao" id="vazao" min="0"> L/s
+         <input type="number" name="vazao" id="vazaocon" min="0"> L/s
         </p>
  
          <br>
  
          <p>
              Dosagem de PAC:
-             <input type="number" name="dosPAC" id="dosPAC" min="0"> mg/L
+             <input type="number" name="dosPAC" id="dosPACcon" min="0"> mg/L
  
          </p>
  
          <p>
              Dosagem de Hipoclorito Pre:
-             <input type="number" name="dosHIPO" id="dosHIPO" min="0"> mg/L
+             <input type="number" name="dosHIPO" id="dosHIPOcon" min="0"> mg/L
  
          </p>
  
          <p>
              Dosagem de Alcalinizante:
-             <input type="number" name="dosALC" id="dosALC" min="0"> mg/L
+             <input type="number" name="dosALC" id="dosALCcon" min="0"> mg/L
  
          </p>
  
          <p>
              Dosagem de Ácido Fluorsilíssico:
-             <input type="number" name="dosFLU" id="dosFLU" min="0"> mg/L
+             <input type="number" name="dosFLU" id="dosFLUcon" min="0"> mg/L
  
          </p>
  
          <p>
-             <input type="button" value="Gravar" onclick="Calculo()">
+             <input type="button" value="Calcular Dosagem" onclick="Calculo()">
          </p>
  
      </div>
 
-    <div id="dosJarTest">
+    <div id="dosJarTest" style="display: none;">
 
+        <p><h2>Para cada Jarro de 2 Litros devem ser dosados</h2></p>
+
+        <br>
+
+        <p id="resPAC100">
+
+        </p>
+
+        <p id="resPAC10">
+
+        </p>
+
+        <p id="resPAC1">
+
+        </p>
     </div>
 
 

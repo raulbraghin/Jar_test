@@ -159,11 +159,22 @@ function SalvaTipoCalculo() {
 
         iTipoDOS = 0
 
+        let mostra = document.getElementById("etavol")
+        mostra.style.display = "block"
+        
+        mostra = document.getElementById("etacon")
+        mostra.style.display = "none"
 
     }
     else if (tipoDOS[1].checked) {
 
         iTipoDOS = 1
+
+        let mostra = document.getElementById("etacon")
+        mostra.style.display = "block"
+        
+        mostra = document.getElementById("etavol")
+        mostra.style.display = "none"
 
     }
 }
@@ -185,8 +196,54 @@ function calculo(){
 
 }
 
-function calculodosagemETAModular() {
+function calcdosETAModVol() {
+
+    let vazao = document.querySelector("input#vazaovol")
+    let dosPAC = document.querySelector("input#dosPACvol")
+    let dosHIPO = document.querySelector("input#dosHIPOvol")
+    let dosALC = document.querySelector("input#dosALCvol")
+    let dosFLU = document.querySelector("input#dosFLUvol")
+
+    let calcular = preenchCampoindexmodular(vazao,dosPAC,dosHIPO,dosALC,dosFLU,0)
+
+    if (calcular == true){
+        let vazlmin = parseint(vazao.value) * 60
+
+        let PAC100 = parseInt(dosPAC.value) / vazlmin
+        let PAC10 = PAC100 * 10
+        let PAC1 = PAC100 * 100
+    
+        let HIPO100 = parseint(dosHIPO.value) / vazlmin
+        let HIPO10 = HIPO100 * 10
+        let HIPO1 = HIPO100 * 100
+    
+        let ALC100 = parseint(dosALC.value) / vazlmin
+        let ALC10 = ALC100 * 10
+        let ALC1 = ALC100 * 100
+    
+        let FLU100 = parseint(dosFLU.value) / vazlmin
+        let FLU10 = FLU100 * 10
+        let FLU1 = FLU100 * 100
+
+        let mostra = document.getElementById("dosJarTest")
+        mostra.style.display = "block"
+        
+        mostraresultado(PAC100,PAC10,PAC1,HIPO100,HIPO10,HIPO1,ALC100,ALC10,ALC1,FLU100,FLU10,FLU1)
+    
+    }
 
 
+
+}
+
+function mostraresultado(PAC100,PAC10,PAC1,HIPO100,HIPO10,HIPO1,ALC100,ALC10,ALC1,FLU100,FLU10,FLU1) {
+
+    let resPAC100 = querySelector("p#resPAC100")
+    let resPAC10 = querySelector("p#resPAC10")
+    let resPAC1 = querySelector("p#resPAC1")
+
+    resPAC100.innerHTML = PAC100
+    resPAC10.innerHTML = PAC1
+    resPAC1.innerHTML = PAC1
 
 }
