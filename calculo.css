@@ -1,0 +1,37 @@
+body {
+    text-align: center;
+}
+
+div#etavol {
+    text-align: center;
+}
+
+div#etacon {
+    text-align: center;
+}
+
+
+input#vazao {
+    background-color: lightblue;
+    width: 100px;
+}
+
+input#dosPAC {
+    background-color: lightblue;
+    width: 100px;
+}
+
+input#dosHIPO {
+    background-color: lightblue;
+    width: 100px;
+}
+
+input#dosALC {
+    background-color: lightblue;
+    width: 100px;
+}
+
+input#dosFLU {
+    background-color: lightblue;
+    width: 100px;
+}

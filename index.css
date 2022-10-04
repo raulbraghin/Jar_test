@@ -23,9 +23,11 @@ input#nflocmod {
 }
 
 input#nflocdiamod {
+    background-color: lightblue;
     width: 100px;
 }
 input#nflochmod {
+    background-color: lightblue;
     width: 100px;
 }
 
@@ -35,13 +37,16 @@ h2#h2DecMod {
 }
 
 input#ndecmod {
+    background-color: lightblue;
     width: 100px;
 }
 
 input#ndecdiamod {
+    background-color: lightblue;
     width: 100px;
 }
 input#ndechmod {
+    background-color: lightblue;
     width: 100px;
 }
 
