@@ -1,9 +1,12 @@
+var iTipoETA = ''
+var iTipoDOS = ''
+
 function SalvaTipoETA() {
 
     let tipoEta = document.getElementsByName('selecao')
 
     let tipoetaselecionada = ''
-    let iTipoETA = ''
+    //let iTipoETA = ''
 
     if (tipoEta[0].checked) {
 
@@ -35,6 +38,8 @@ function SalvaTipoETA() {
     }
 
     MostrarDivTipoETA(iTipoETA) //Chama a Função que mostra a div da ETA
+
+    alert('Seleção ' + iTipoETA)
 
 }
 
@@ -124,8 +129,9 @@ function CalcularVolModular() {
     let TudoPre = preenchCampoindexmodular(iQuantFlocmod,fdiaFlocmod,fhFlocmod,iQuantDecMod,fdiaDecMod,fhDecMod)
 
     if (TudoPre == true){   //se todos os campos preenchidos, mostra link
-        let mostra = document.getElementById("linkpc")
+        let mostra = document.getElementById("CalculoDosagem")
         mostra.style.display = "block"
+        
     }
     //alert(`Área do Floculador ${fareaDecMod} e volume ${fvolDecMod}`)
 }
@@ -153,7 +159,7 @@ function preenchCampoindexmodular(v1,v2,v3,v4,v5,v6) {
 function SalvaTipoCalculo() {
     let tipoDOS = document.getElementsByName('selecaodos')
 
-    let iTipoDOS = ''
+    //let iTipoDOS = ''
 
     if (tipoDOS[0].checked) {
 
@@ -179,19 +185,27 @@ function SalvaTipoCalculo() {
     }
 }
 
-function calculo(){
+function Calculo(){
 
-    if (SalvaTipoETA.iTipoETA==0 && SalvaTipoCalculo.iTipoDOS==0){  //ETA Modular por volume
+    alert('variável alert ' + iTipoETA)
+    alert('variável alert ' + iTipoDOS)
+
+    if (iTipoETA==0 && iTipoDOS==0){  //ETA Modular por volume
         calcdosETAModVol()
-    } else if (SalvaTipoETA.iTipoETA==0 && SalvaTipoCalculo.iTipoDOS==1){   //ETA Modular por concentração
+        alert('calcdosETAModVol')
+    } else if (iTipoETA==0 && iTipoDOS==1){   //ETA Modular por concentração
         calcdosETAModCon()
-    } else if (SalvaTipoETA.iTipoETA==1 && SalvaTipoCalculo.iTipoDOS==0){
+        alert('calcdosETAModCon')
+    } else if (iTipoETA==1 && iTipoDOS==0){
         calcdosETATorrezanVol()
-    } else if (SalvaTipoETA.iTipoETA==1 && SalvaTipoCalculo.iTipoDOS==1){
+        alert('calcdosETATorrezanVol')
+    } else if (iTipoETA==1 && iTipoDOS==1){
         calcdosETATorrezanCon()
+        alert('calcdosETATorrezanCon')
     }
-     else if (SalvaTipoETA.iTipoETA==2){
+     else if (iTipoETA==2){
         calculodosagemETAx()
+        alert('calcdosETATorrezanCon')
     }
 
 }

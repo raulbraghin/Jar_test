@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
     <title>Jar Test</title>
     <link rel="stylesheet" href="index.css">
 </head>
+
 <body>
     <h1>Cálculo automático Jar Test</h1>
 
@@ -22,67 +24,187 @@
     </div>
 
     <p><input type="button" value="Gravar" onclick="SalvaTipoETA()"></p>
-    
-<div id="confModular" style="display: none;">
 
-    <h2 id="h2flocMod">Floculadores</h2>
+    <div id="confModular" style="display: none;">
 
-    <p>
-        Número de Floculadores:
-        <input type="number" name="nflocmod" id="nflocmod" min="0">
-    </p>
+        <h2 id="h2flocMod">Floculadores</h2>
 
-    <p>
-        Diâmetro dos Floculadores:
-        <input type="number" name="nflocdiamod" id="nflocdiamod"> metros
-    </p>
+        <p>
+            Número de Floculadores:
+            <input type="number" name="nflocmod" id="nflocmod" min="0">
+        </p>
 
-    <p>
-        Altura dos Floculadores:
-        <input type="number" name="nflochmod" id="nflochmod"> metros
-    </p>
+        <p>
+            Diâmetro dos Floculadores:
+            <input type="number" name="nflocdiamod" id="nflocdiamod"> metros
+        </p>
 
-<br>
+        <p>
+            Altura dos Floculadores:
+            <input type="number" name="nflochmod" id="nflochmod"> metros
+        </p>
 
-    <h2 id="h2DecMod">Decantadores</h2>
+        <br>
 
-    <p>
-        Número de decantadores:
-        <input type="number" name="ndecmod" id="ndecmod" min="0">
-    </p>
+        <h2 id="h2DecMod">Decantadores</h2>
 
-    <p>
-        Diâmetro dos Decantadores:
-        <input type="number" name="ndecdiamod" id="ndecdiamod"> metros
-    </p>
+        <p>
+            Número de decantadores:
+            <input type="number" name="ndecmod" id="ndecmod" min="0">
+        </p>
 
-    <p>
-        Altura dos Decantadores:
-        <input type="number" name="ndechmod" id="ndechmod"> metros
-    </p>
+        <p>
+            Diâmetro dos Decantadores:
+            <input type="number" name="ndecdiamod" id="ndecdiamod"> metros
+        </p>
 
-    <p>
-        <input type="button" value="Gravar" onclick="CalcularVolModular()">
-    </p>
+        <p>
+            Altura dos Decantadores:
+            <input type="number" name="ndechmod" id="ndechmod"> metros
+        </p>
 
-    <p id="linkpc" style="display: none;"><a href="calculo.html">Ir para página de Cálculo</a></p>
+        <p>
+            <input type="button" value="Gravar" onclick="CalcularVolModular()">
+        </p>
 
-</div>
+        <p id="linkpc" style="display: none;"><a href="calculo.html">Ir para página de Cálculo</a></p>
 
-<div id="confTorrezan" style="display: none;">
-Minha div Torrezan
+    </div>
 
-</div>
+    <div id="confTorrezan" style="display: none;">
+        Minha div Torrezan
 
-
-<div id="confOutros" style="display: none;">
-Minha div Outros
-</div>
+    </div>
 
 
-<footer>
-    <h2>Automação RJOS</h2>
-</footer>
+    <div id="confOutros" style="display: none;">
+        Minha div Outros
+    </div>
+
+
+    <div id="CalculoDosagem" style="display: none;">
+
+
+        <h1>Cálculo de dosagem</h1>
+
+        <div id="sel_eta">
+            <h3>Selecione o tipo de Cálculo</h3>
+
+            <input type="radio" name="selecaodos" id="volume">
+            <label for="volume">Calculo de dosagem por volume</label>
+            <input type="radio" name="selecaodos" id="concentracao">
+            <label for="concentracao">Calculo de dosagem por concentração</label>
+        </div>
+
+        <p><input type="button" value="Gravar" onclick="SalvaTipoCalculo()"></p>
+
+
+        <div id="etavol" style="display: none;">
+
+            <p>
+                Vazão da ETA:
+                <input type="number" name="vazao" id="vazaovol" min="0"> L/s
+            </p>
+
+            <br>
+
+            <p>
+                Dosagem de PAC:
+                <input type="number" name="dosPAC" id="dosPACvol" min="0"> ml/min
+
+            </p>
+
+            <p>
+                Dosagem de Hipoclorito Pre:
+                <input type="number" name="dosHIPO" id="dosHIPOvol" min="0"> ml/min
+
+            </p>
+
+            <p>
+                Dosagem de Alcalinizante:
+                <input type="number" name="dosALC" id="dosALCvol" min="0"> ml/min
+
+            </p>
+
+            <p>
+                Dosagem de Ácido Fluorsilíssico:
+                <input type="number" name="dosFLU" id="dosFLUvol" min="0"> ml/min
+
+            </p>
+
+            <p>
+                <input type="button" value="Calcular Dosagem" onclick="Calculo()">
+            </p>
+
+        </div>
+
+        <div id="etacon" style="display: none;">
+
+            <p>
+                Vazão da ETA:
+                <input type="number" name="vazao" id="vazaocon" min="0"> L/s
+            </p>
+
+            <br>
+
+            <p>
+                Dosagem de PAC:
+                <input type="number" name="dosPAC" id="dosPACcon" min="0"> mg/L
+
+            </p>
+
+            <p>
+                Dosagem de Hipoclorito Pre:
+                <input type="number" name="dosHIPO" id="dosHIPOcon" min="0"> mg/L
+
+            </p>
+
+            <p>
+                Dosagem de Alcalinizante:
+                <input type="number" name="dosALC" id="dosALCcon" min="0"> mg/L
+
+            </p>
+
+            <p>
+                Dosagem de Ácido Fluorsilíssico:
+                <input type="number" name="dosFLU" id="dosFLUcon" min="0"> mg/L
+
+            </p>
+
+            <p>
+                <input type="button" value="Calcular Dosagem" onclick="Calculo()">
+            </p>
+
+        </div>
+
+        <div id="dosJarTest" style="display: none;">
+
+            <p>
+            <h2>Para cada Jarro de 2 Litros devem ser dosados</h2>
+            </p>
+
+            <br>
+
+            <p id="resPAC100">
+
+            </p>
+
+            <p id="resPAC10">
+
+            </p>
+
+            <p id="resPAC1">
+
+            </p>
+        </div>
+
+
+    </div>
+
+    <footer>
+        <h2>Automação RJOS</h2>
+    </footer>
     <script src="jartest.js"></script>
 </body>
+
 </html>
