@@ -252,12 +252,17 @@ function calcdosETAModVol() {
 
 function mostraresultado(PAC100,PAC10,PAC1,HIPO100,HIPO10,HIPO1,ALC100,ALC10,ALC1,FLU100,FLU10,FLU1) {
 
+    mostra = document.getElementById("dosJarTest")
+    mostra.style.display = "none"   
+    
     let resPAC100 = querySelector("p#resPAC100")
     let resPAC10 = querySelector("p#resPAC10")
     let resPAC1 = querySelector("p#resPAC1")
 
     resPAC100.innerHTML = PAC100
-    resPAC10.innerHTML = PAC1
+    resPAC10.innerHTML = PAC10
     resPAC1.innerHTML = PAC1
+
+ 
 
 }
