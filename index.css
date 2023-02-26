@@ -12,6 +12,25 @@ div#confModular {
     text-align: center;
 }
 
+
+img#EtaTorrezan {
+
+    height: 200px;
+    width: 200px;
+    border-style: double;
+    border-color: black;
+
+}
+
+img#EtaModular {
+
+    height: 200px;
+    width: 200px;
+    border-style: double;
+    border-color: black;
+
+}
+
 h2#h2flocMod {
     text-align: center;
     color: blue;
