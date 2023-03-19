@@ -1,20 +1,35 @@
 body {
-    text-align: center;    
+    text-align: center;
+    align-items: center;
 }
+
+/*ALINHAMENTO DA IMAGEM COM A CAIXA DE SELEÇÃO NO CENTRO*/
 
 div#sel_eta {
-    align-items: center;
-    text-align: center;
+
+    display: inline-flex;
+    float: inline;
+
 }
 
-div#confModular {
+div#ImgEta {
+
+    flex: 1;
+    margin:10px;
+
+}
+
+div#confModular, div#confTorrezan, div#confOutros {
+
     align-items: center;
     text-align: center;
+
 }
 
 
-img#EtaTorrezan {
+img#EtaTorrezan, img#EtaModular {
 
+    text-align: center;
     height: 200px;
     width: 200px;
     border-style: double;
@@ -22,63 +37,34 @@ img#EtaTorrezan {
 
 }
 
-img#EtaModular {
-
-    height: 200px;
-    width: 200px;
-    border-style: double;
-    border-color: black;
-
-}
-
-h2#h2flocMod {
+h2#h2flocMod, h2#h2DecMod {
     text-align: center;
     color: blue;
 }
 
-input#nflocmod {
-    background-color: lightblue;
-    width: 100px;
-}
-
-input#nflocdiamod {
-    background-color: lightblue;
-    width: 100px;
-}
-input#nflochmod {
-    background-color: lightblue;
-    width: 100px;
-}
-
-h2#h2DecMod {
-    text-align: center;
-    color: blue;
-}
-
-input#ndecmod {
-    background-color: lightblue;
-    width: 100px;
-}
-
-input#ndecdiamod {
-    background-color: lightblue;
-    width: 100px;
-}
-input#ndechmod {
+input#nflocmod, input#nflocdiamod, input#nflochmod {
     background-color: lightblue;
     width: 100px;
 }
 
 
-div#confTorrezan {
-    align-items: center;
-    text-align: center;
+input#ndecmod, input#ndecdiamod, input#ndechmod {
+    background-color: lightblue;
+    width: 100px;
 }
 
-div#confOutros {
-    align-items: center;
-    text-align: center;
+input#CompFlocTorrezan, input#LargFlocTorrezan, input#AltFlocTorrezan {
+    background-color: lightblue;
+    width: 100px;
 }
+
+
+input#CompDecTorrezan, input#LargDecTorrezan, input#AltDecTorrezan {
+    background-color: lightblue;
+    width: 100px;
+}
+
+
 
 footer {
     text-align: center;
@@ -99,27 +85,7 @@ div#etacon {
 
 
 
-input#vazao {
-    background-color: lightblue;
-    width: 100px;
-}
-
-input#dosPAC {
-    background-color: lightblue;
-    width: 100px;
-}
-
-input#dosHIPO {
-    background-color: lightblue;
-    width: 100px;
-}
-
-input#dosALC {
-    background-color: lightblue;
-    width: 100px;
-}
-
-input#dosFLU {
+input#vazao, input#dosPac, input#dosHIPO, input#dosALC, input#dosFLU {
     background-color: lightblue;
     width: 100px;
 }

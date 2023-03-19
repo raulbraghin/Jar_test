@@ -12,39 +12,50 @@
 <body>
     <h1>Cálculo automático Jar Test</h1>
 
+
+    <!-- seleção do tipo de eta com imagem -->
+
+    <p>
+    <h3>Selecione o tipo de ETA</h3>
+    </p>
+
+
     <div id="sel_eta">
-        <h3>Selecione o tipo de ETA</h3>
 
-        <input type="radio" name="selecao" id="modular">
-        <label for="modular">ETA Modular</label>
-        <input type="radio" name="selecao" id="torrezan">
-        <label for="torrezan">Torrezan</label>
-        <input type="radio" name="selecao" id="outro">
-        <label for="outro">Outros</label>
+        <span class="ImgEta">
+            <p>
+                <input type="radio" name="selecao" id="modular">
+                <label for="modular">ETA Modular</label>
+            </p>
+
+            <img id="EtaModular" src="modular.png">
+
+        </span>
+
+        <span class="ImgEta">
+
+            <p>
+                <input type="radio" name="selecao" id="torrezan">
+                <label for="torrezan">Torrezan</label>
+
+            </p>
+
+            <img id="EtaTorrezan" src="torrezan.png">
+
+        </span>
+
     </div>
 
-<div class="AlignImgEta">
-
-    <div class="img_eta">
-
-<img id="EtaTorrezan" src="torrezan.png">
-        
-
-    </div>
-    <div class="img_eta">
-
-        <img id="EtaModular" src="modular.png">
-
-    </div>
-
-</div>
-
+    <!-- botão que grava seleção do tio de eta e abre proximo bloco -->
 
     <p><input type="button" value="Gravar" onclick="SalvaTipoETA()"></p>
 
+
+    <!-- Local onde insere dados da ETA Modular -->
+
     <div id="confModular" style="display: none;">
 
-        <h2 id="h2flocMod">Floculadores</h2>
+        <h2 id="h2flocMod">Floculadores Modulares</h2>
 
         <p>
             Número de Floculadores:
@@ -63,7 +74,7 @@
 
         <br>
 
-        <h2 id="h2DecMod">Decantadores</h2>
+        <h2 id="h2DecMod">Decantadores Modulares</h2>
 
         <p>
             Número de decantadores:
@@ -88,14 +99,55 @@
 
     </div>
 
+    <!-- Local onde insere dados da ETA TORREZAN -->
+
     <div id="confTorrezan" style="display: none;">
-        Minha div Torrezan
-
-    </div>
 
 
-    <div id="confOutros" style="display: none;">
-        Minha div Outros
+        <h2 id="h2FlocTor">Floculadores Torrezan</h2>
+
+        <p>
+            Comprimento do Floculador:
+            <input type="number" name="CompFlocTorrezan" id="CompFlocTorrezan" min="0.00"> metros
+        </p>
+
+        <p>
+            Largura do Floculador:
+            <input type="number" name="LargFlocTorrezan" id="LargFlocTorrezan" min="0.00"> metros
+        </p>
+
+        <p>
+            Altura do Floculador:
+            <input type="number" name="AltFlocTorrezan" id="AltFlocTorrezan" min ="0.00"> metros
+        </p>
+
+        <br>
+
+        <h2 id="h2DecTor">Decantadores Torrezan</h2>
+
+        <p>
+            Comprimento de cada decantador:
+            <input type="number" name="CompDecTorrezan" id="CompDecTorrezan" min="0.00"> metros
+        </p>
+
+        <p>
+            Largura de cada decantador:
+            <input type="number" name="LargDecTorrezan" id="LargDecTorrezan" min="0.00"> metros
+        </p>
+
+        <p>
+            Altura dos Decantadores:
+            <input type="number" name="AltDecTorrezan" id="AltDecTorrezan" min="0.00"> metros
+        </p>
+
+        <p>
+            <input type="button" value="Gravar" onclick="CalcularVolTorrezan()">
+        </p>
+
+        <p id="linkpc" style="display: none;"><a href="calculo.html">Ir para página de Cálculo</a></p>
+
+
+
     </div>
 
 
@@ -104,7 +156,7 @@
 
         <h1>Cálculo de dosagem</h1>
 
-        <div id="sel_eta">
+        <div id="selTipoCalc">
             <h3>Selecione o tipo de Cálculo</h3>
 
             <input type="radio" name="selecaodos" id="volume">
@@ -196,24 +248,56 @@
 
         <div id="dosJarTest" style="display: none;">
 
-            <p>
-            <h2>Para cada Jarro de 2 Litros devem ser dosados</h2>
-            </p>
+            <p><h2>Para cada Jarro de 2 Litros devem ser dosados</h2></p>
 
             <br>
 
-            <p id="resPAC100">
+            <p><h3>Dosagem de PAC</h3></p>
 
-            </p>
+            <p id="resPAC100"></p>
 
-            <p id="resPAC10">
+            <p id="resPAC10"></p>
 
-            </p>
+            <p id="resPAC1"></p>
 
-            <p id="resPAC1">
+            <br>
 
-            </p>
+            <p><h3>Dosagem de Hipoclorito</h3></p>
+
+            <p id="resHIPO100"></p>
+
+            <p id="resHIPO10"></p>
+
+            <p id="resHIPO1"></p>
+
+            <br>
+
+            <p><h3>Dosagem de Alcalinizante</h3></p>
+
+            <p id="resALC100"></p>
+
+            <p id="resALC10"></p>
+
+            <p id="resALC1"></p>
+
+            <br>
+
+            <p><h3>Dosagem de Ácido Fluorsilíssico</h3></p>
+
+            <p id="resFLU100"></p>
+
+            <p id="resFLU10"></p>
+
+            <p id="resFLU1"></p>
+
+            <p><h2>Devem ser configurados os seguintes tempos no jartest</h2></p>
+
+            <br>
+
+            
         </div>
+
+
 
 
     </div>
