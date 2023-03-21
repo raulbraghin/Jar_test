@@ -1,9 +1,21 @@
+/*
+link ara geração do arquivo para gravar os dados
+https://egghead.io/lessons/node-js-write-or-append-to-a-file-in-node-js-with-fs-writefile-and-fs-writefilesync
+*/
+
+//Variáveis globais
 var iTipoETA = ''
 var iTipoDOS = ''
+
 var QuantidadeFlocETAModular
 var VolCadalFlocModular
 var QuantidadeDecETAModular
 var VolCadaDecModular
+
+var VolCadalFlocTorrezan
+var QuantidadeDecETATorrezan
+var VolCadaDecTorrezan
+
 var CalculoConcentracao = false
 
 function SalvaTipoETA() {
@@ -112,6 +124,7 @@ function CalcularVolModular() {
         console.log(`Área do Floculador ${fareaDecMod} e volume ${fvolDecMod}`)
     }
 
+    //Manda valores para variáveis globais
     QuantidadeFlocETAModular = iQuantFlocmod.value;
     VolCadalFlocModular = fvolFlocMod;
     QuantidadeDecETAModular = iQuantDecMod.value;
@@ -131,6 +144,7 @@ function CalcularVolTorrezan() {
 
     console.log(fVolFloculador)
 
+    let iNumeroDecantadores = document.querySelector('input#iNumDecMódulo')
     let fCompDecantador = document.querySelector('input#CompDecTorrezan')
     let fLargDecantador = document.querySelector('input#LargDecTorrezan')
     let fAltDecantador = document.querySelector('input#AltDecTorrezan')
@@ -150,7 +164,14 @@ function CalcularVolTorrezan() {
         console.log(`Volume do Floculador é ${fVolFloculador} e do decantador é ${fVolDecantador}`)
     }
 
+    //Manda valores para variáveis globais
+    VolCadalFlocTorrezan = fVolFloculador
+    QuantidadeDecETATorrezan = iNumeroDecantadores.value
+    VolCadaDecTorrezan = fVolDecantador
+
 }
+
+
 function PreencCampos(v1, v2, v3, v4, v5, v6) {
 
     if (v1.value == '' || v2.value == '' || v3.value == '' || v4.value == '' || v5.value == '' || v6.value == '') {
@@ -236,7 +257,7 @@ function CalcDosETAModVol() {
         /* CONVERTE VAZÃO DE L/S PARA L/MIN */
         let vazlmin = parseInt(vazao.value) * 60
 
-        /* CONCENTRAÇÃO DE PRODUTO SEMPRE CONCENTRADO, DILUIDO 10% E DILUIDO 1% */
+        /* CONCENTRAÇÃO DE PRODUTO 100%, DILUIDO 10% E DILUIDO 1% */
 
         let PAC100 = (parseInt(dosPAC.value) / vazlmin * 2).toFixed(4)
         let PAC10 = (PAC100 * 10 * 2).toFixed(3)
@@ -273,7 +294,66 @@ function CalcDosETAModVol() {
 }
 
 
-function mostraresultado(PAC100, PAC10, PAC1, HIPO100, HIPO10, HIPO1, ALC100, ALC10, ALC1, FLU100, FLU10, FLU1) {
+function calcdosETATorrezanVol() {
+
+
+    let vazao = document.querySelector('input#vazaovol')
+    let dosPAC = document.querySelector('input#dosPACvol')
+    let dosHIPO = document.querySelector('input#dosHIPOvol')
+    let dosALC = document.querySelector('input#dosALCvol')
+    let dosFLU = document.querySelector('input#dosFLUvol')
+
+    let calcular = PreencCampos(vazao, dosPAC, dosHIPO, dosALC, dosFLU, 0)
+
+    console.log('Dentro da função calcdosETATorrezanVol')
+    console.log('Resultado de calcular ' + calcular)
+    console.log(vazao.value + ',' + dosPAC.value + ',' + dosHIPO.value + ',' + dosALC.value + ',' + dosFLU.value)
+
+    if (calcular == true) {
+
+        console.log('Dentro da função Calc if calcular')
+
+        /* CONVERTE VAZÃO DE L/S PARA L/MIN */
+        let vazlmin = parseInt(vazao.value) * 60
+
+        /* CONCENTRAÇÃO DE PRODUTO 100%, DILUIDO 10% E DILUIDO 1% */
+
+        let PAC100 = (parseInt(dosPAC.value) / vazlmin * 2).toFixed(4)
+        let PAC10 = (PAC100 * 10 * 2).toFixed(3)
+        let PAC1 = (PAC100 * 100 * 2).toFixed(2)
+
+        let HIPO100 = (parseInt(dosHIPO.value) / vazlmin * 2).toFixed(4)
+        let HIPO10 = (HIPO100 * 10 * 2).toFixed(3)
+        let HIPO1 = (HIPO100 * 100 * 2).toFixed(2)
+
+        let ALC100 = (parseInt(dosALC.value) / vazlmin * 2).toFixed(4)
+        let ALC10 = (ALC100 * 10 * 2).toFixed(3)
+        let ALC1 = (ALC100 * 100 * 2).toFixed(2)
+
+        let FLU100 = (parseInt(dosFLU.value) / vazlmin * 2).toFixed(4)
+        let FLU10 = (FLU100 * 10 * 2).toFixed(3)
+        let FLU1 = (FLU100 * 100 * 2).toFixed(2)
+
+        /* Calculo de tempo*/
+        let iTempoFloc = parseInt(VolCadalFlocTorrezan * 1000 / vazao.value)
+        let itempoDec = parseInt(VolCadaDecTorrezan *1000 / (vazao.value / QuantidadeDecETATorrezan))
+
+        console.log(itempoDec)
+        console.log(iTempoFloc)
+
+
+        let mostra = document.getElementById("dosJarTest")
+        mostra.style.display = "block"
+
+        mostraresultado(PAC100, PAC10, PAC1, HIPO100, HIPO10, HIPO1, ALC100, ALC10, ALC1, FLU100, FLU10, FLU1, iTempoFloc, itempoDec)
+
+    }
+
+
+}
+
+
+function mostraresultado(PAC100, PAC10, PAC1, HIPO100, HIPO10, HIPO1, ALC100, ALC10, ALC1, FLU100, FLU10, FLU1, iTempoFloc, itempoDec) {
 
     let resPAC100 = document.querySelector("p#resPAC100")
     let resPAC10 = document.querySelector("p#resPAC10")
@@ -291,6 +371,9 @@ function mostraresultado(PAC100, PAC10, PAC1, HIPO100, HIPO10, HIPO1, ALC100, AL
     let resFLU10 = document.querySelector("p#resFLU10")
     let resFLU1 = document.querySelector("p#resFLU1")
 
+    let TempoFloc = document.querySelector("p#Floculador")
+    let tempoDec = document.querySelector("p#Decantador")
+
     resPAC100.innerHTML = `Para uma dosagem de PAC concentrado, você deve dosar ${PAC100} mL`
     resPAC10.innerHTML = `Para uma dosagem de PAC diluido a 10%, você deve dosar ${PAC10} mL`
     resPAC1.innerHTML = `Para uma dosagem de PAC diluido a 1%, você deve dosar ${PAC1} mL`
@@ -307,6 +390,17 @@ function mostraresultado(PAC100, PAC10, PAC1, HIPO100, HIPO10, HIPO1, ALC100, AL
     resFLU10.innerHTML = `Para uma dosagem de Ácido Fluorsilíssico diluido a 10%, você deve dosar ${FLU10} mL`
     resFLU1.innerHTML = `Para uma dosagem de Ácido Fluorsilíssico diluido a 1%, você deve dosar ${FLU1} mL`
 
+    if (iTipoETA == 0) {
+        TempoFloc.innerHTML = `O Tempo de cada floculador modular é ${iTempoFloc} segundos`
+    }else{
+        TempoFloc.innerHTML = `O Tempo do floculador torrezan é ${iTempoFloc} segundos`
+    }
 
+    if (iTipoETA == 0) {
+        tempoDec.innerHTML = `O Tempo de cada Decantador modular é ${itempoDec} segundos`
+    }else{
+        tempoDec.innerHTML = `O Tempo de cada Decantador torrezan é ${itempoDec} segundos`
+    }
 
 }
+

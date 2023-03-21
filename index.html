@@ -126,6 +126,11 @@
         <h2 id="h2DecTor">Decantadores Torrezan</h2>
 
         <p>
+            Quantidade de Decantadores para cada Floculador:
+            <input type="number" name="iNumDecMódulo" id="iNumDecMódulo" min="1">
+        </p>
+
+        <p>
             Comprimento de cada decantador:
             <input type="number" name="CompDecTorrezan" id="CompDecTorrezan" min="0.00"> metros
         </p>
@@ -171,7 +176,7 @@
         <div id="etavol" style="display: none;">
 
             <p>
-                Vazão da ETA:
+                Vazão do módulo da ETA:
                 <input type="number" name="vazao" id="vazaovol" min="0"> L/s
             </p>
 
@@ -248,9 +253,9 @@
 
         <div id="dosJarTest" style="display: none;">
 
-            <p><h2>Para cada Jarro de 2 Litros devem ser dosados</h2></p>
-
             <br>
+
+            <p><h2>Para cada Jarro de 2 Litros devem ser dosados</h2></p>
 
             <p><h3>Dosagem de PAC</h3></p>
 
@@ -290,10 +295,19 @@
 
             <p id="resFLU1"></p>
 
-            <p><h2>Devem ser configurados os seguintes tempos no jartest</h2></p>
-
             <br>
 
+            <p><h2>Devem ser configurados os seguintes tempos no jartest</h2></p>
+
+            <p><h3>Floculador</h3></p>
+
+            <p id="Floculador"></p>
+            
+            <br>
+
+            <p><h3>Decantador</h3></p>
+
+            <p id="Decantador"></p>
             
         </div>
 
