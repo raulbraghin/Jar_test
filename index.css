@@ -1,6 +1,10 @@
 body {
     text-align: center;
     align-items: center;
+    background-image:url("imagens/sabesp\ marca\ dagua.png");
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    background-position: center;
 }
 
 /*ALINHAMENTO DA IMAGEM COM A CAIXA DE SELEÇÃO NO CENTRO*/
@@ -26,8 +30,7 @@ div#confModular, div#confTorrezan, div#confOutros {
 
 }
 
-
-img#EtaTorrezan, img#EtaModular {
+img {
 
     text-align: center;
     height: 200px;
@@ -37,11 +40,22 @@ img#EtaTorrezan, img#EtaModular {
 
 }
 
+/*
+img#EtaTorrezan, img#EtaModular {
+
+    text-align: center;
+    height: 200px;
+    width: 200px;
+    border-style: double;
+    border-color: black;
+
+}*/
+
 h2#h2flocMod, h2#h2DecMod {
     text-align: center;
     color: blue;
 }
-
+/*
 input#nflocmod, input#nflocdiamod, input#nflochmod {
     background-color: lightblue;
     width: 100px;
@@ -59,11 +73,16 @@ input#CompFlocTorrezan, input#LargFlocTorrezan, input#AltFlocTorrezan {
 }
 
 
-input#CompDecTorrezan, input#LargDecTorrezan, input#AltDecTorrezan {
+input#iNumDecMódulo, input#CompDecTorrezan, input#LargDecTorrezan, input#AltDecTorrezan {
     background-color: lightblue;
     width: 100px;
 }
+*/
 
+input[type="number"] {
+    background-color: lightblue;
+    width: 100px;
+}
 
 
 footer {

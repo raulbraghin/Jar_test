@@ -172,16 +172,7 @@ function CalcularVolTorrezan() {
 }
 
 
-function PreencCampos(v1, v2, v3, v4, v5, v6) {
-
-    if (v1.value == '' || v2.value == '' || v3.value == '' || v4.value == '' || v5.value == '' || v6.value == '') {
-        alert('Preencher todos os campos')
-    } else {
-        return true
-    }
-
-}
-
+/*
 function SalvaTipoCalculo() {
 
     let tipoDOS = document.getElementsByName('selecaodos')
@@ -209,7 +200,9 @@ function SalvaTipoCalculo() {
         mostra.style.display = "none"
 
     }
-}
+}*/
+
+
 
 function Calculo() {
 
@@ -260,20 +253,20 @@ function CalcDosETAModVol() {
         /* CONCENTRAÇÃO DE PRODUTO 100%, DILUIDO 10% E DILUIDO 1% */
 
         let PAC100 = (parseInt(dosPAC.value) / vazlmin * 2).toFixed(4)
-        let PAC10 = (PAC100 * 10 * 2).toFixed(3)
-        let PAC1 = (PAC100 * 100 * 2).toFixed(2)
+        let PAC10 = (PAC100 * 10).toFixed(3)
+        let PAC1 = (PAC100 * 100).toFixed(2)
 
         let HIPO100 = (parseInt(dosHIPO.value) / vazlmin * 2).toFixed(4)
-        let HIPO10 = (HIPO100 * 10 * 2).toFixed(3)
-        let HIPO1 = (HIPO100 * 100 * 2).toFixed(2)
+        let HIPO10 = (HIPO100 * 10).toFixed(3)
+        let HIPO1 = (HIPO100 * 100).toFixed(2)
 
         let ALC100 = (parseInt(dosALC.value) / vazlmin * 2).toFixed(4)
-        let ALC10 = (ALC100 * 10 * 2).toFixed(3)
-        let ALC1 = (ALC100 * 100 * 2).toFixed(2)
+        let ALC10 = (ALC100 * 10).toFixed(3)
+        let ALC1 = (ALC100 * 100).toFixed(2)
 
         let FLU100 = (parseInt(dosFLU.value) / vazlmin * 2).toFixed(4)
-        let FLU10 = (FLU100 * 10 * 2).toFixed(3)
-        let FLU1 = (FLU100 * 100 * 2).toFixed(2)
+        let FLU10 = (FLU100 * 10).toFixed(3)
+        let FLU1 = (FLU100 * 100).toFixed(2)
 
         /* Calculo de tempo*/
         let iTempoFloc = parseInt(VolCadalFlocModular * 1000 / vazao.value)
@@ -319,20 +312,20 @@ function calcdosETATorrezanVol() {
         /* CONCENTRAÇÃO DE PRODUTO 100%, DILUIDO 10% E DILUIDO 1% */
 
         let PAC100 = (parseInt(dosPAC.value) / vazlmin * 2).toFixed(4)
-        let PAC10 = (PAC100 * 10 * 2).toFixed(3)
-        let PAC1 = (PAC100 * 100 * 2).toFixed(2)
+        let PAC10 = (PAC100 * 10).toFixed(3)
+        let PAC1 = (PAC100 * 100).toFixed(2)
 
         let HIPO100 = (parseInt(dosHIPO.value) / vazlmin * 2).toFixed(4)
-        let HIPO10 = (HIPO100 * 10 * 2).toFixed(3)
-        let HIPO1 = (HIPO100 * 100 * 2).toFixed(2)
+        let HIPO10 = (HIPO100 * 10).toFixed(3)
+        let HIPO1 = (HIPO100 * 100).toFixed(2)
 
         let ALC100 = (parseInt(dosALC.value) / vazlmin * 2).toFixed(4)
-        let ALC10 = (ALC100 * 10 * 2).toFixed(3)
-        let ALC1 = (ALC100 * 100 * 2).toFixed(2)
+        let ALC10 = (ALC100 * 10).toFixed(3)
+        let ALC1 = (ALC100 * 100).toFixed(2)
 
         let FLU100 = (parseInt(dosFLU.value) / vazlmin * 2).toFixed(4)
-        let FLU10 = (FLU100 * 10 * 2).toFixed(3)
-        let FLU1 = (FLU100 * 100 * 2).toFixed(2)
+        let FLU10 = (FLU100 * 10).toFixed(3)
+        let FLU1 = (FLU100 * 100).toFixed(2)
 
         /* Calculo de tempo*/
         let iTempoFloc = parseInt(VolCadalFlocTorrezan * 1000 / vazao.value)
@@ -404,3 +397,13 @@ function mostraresultado(PAC100, PAC10, PAC1, HIPO100, HIPO10, HIPO1, ALC100, AL
 
 }
 
+
+function PreencCampos(v1, v2, v3, v4, v5, v6) {
+
+    if (v1.value == '' || v2.value == '' || v3.value == '' || v4.value == '' || v5.value == '' || v6.value == '') {
+        alert('Preencher todos os campos')
+    } else {
+        return true
+    }
+
+}
