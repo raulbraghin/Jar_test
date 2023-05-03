@@ -3,6 +3,13 @@ link ara geração do arquivo para gravar os dados
 https://egghead.io/lessons/node-js-write-or-append-to-a-file-in-node-js-with-fs-writefile-and-fs-writefilesync
 */
 
+/*
+link para utilização das funções export e import
+https://blog.betrybe.com/tecnologia/import-e-export/#:~:text=Para%20importar%20qualquer%20vari%C3%A1vel%20ou,erro%20na%20execu%C3%A7%C3%A3o%20do%20c%C3%B3digo.
+*/
+
+//export var DadosProcesso = []  //Dados a serem exportados
+
 //Variáveis globais
 var iTipoETA = ''
 var iTipoDOS = ''
@@ -364,8 +371,11 @@ function mostraresultado(PAC100, PAC10, PAC1, HIPO100, HIPO10, HIPO1, ALC100, AL
     let resFLU10 = document.querySelector("p#resFLU10")
     let resFLU1 = document.querySelector("p#resFLU1")
 
-    let TempoFloc = document.querySelector("p#Floculador")
-    let tempoDec = document.querySelector("p#Decantador")
+    let TempoFloc = document.querySelector("p#TempoFloculador")
+    let tempoDec = document.querySelector("p#TempoDecantador")
+
+    let VolFloculador = document.querySelector("p#VolumeFloculador")
+    let VolDecantador = document.querySelector("p#VolumeDecantador")
 
     resPAC100.innerHTML = `Para uma dosagem de PAC concentrado, você deve dosar ${PAC100} mL`
     resPAC10.innerHTML = `Para uma dosagem de PAC diluido a 10%, você deve dosar ${PAC10} mL`
@@ -395,6 +405,62 @@ function mostraresultado(PAC100, PAC10, PAC1, HIPO100, HIPO10, HIPO1, ALC100, AL
         tempoDec.innerHTML = `O Tempo de cada Decantador torrezan é ${itempoDec} segundos`
     }
 
+    if (iTipoETA == 0) {
+        VolFloculador.innerHTML = `O volume de cada floculador modular é ${VolCadalFlocModular.toFixed(2)} m3`
+    }else{
+        VolFloculador.innerHTML = `O volume do floculador torrezan é ${VolCadalDecModular.toFixed(2)} m3`
+    }
+
+    if (iTipoETA == 0) {
+        VolDecantador.innerHTML = `O volume de cada Decantador modular é ${VolCadaDecModular.toFixed(2)} m3`
+    }else{
+        VolDecantador.innerHTML = `O volume de cada Decantador torrezan é ${VolCadaDecModular.toFixed(2)} m3`
+    }
+
+    ExportarValores(
+        resPAC100.innerHTML, 
+        resPAC10.innerHTML,
+        resPAC1.innerHTML, 
+        resHIPO100.innerHTML, 
+        resHIPO10.innerHTML, 
+        resHIPO1.innerHTML, 
+        resALC100.innerHTML, 
+        resALC10.innerHTMLALC10, 
+        resALC1.innerHTML, 
+        resFLU100.innerHTML, 
+        resFLU10.innerHTML, 
+        resFLU1.innerHTML, 
+        TempoFloc.innerHTML, 
+        tempoDec.innerHTML, 
+        VolFloculador.innerHTML,
+        VolDecantador.innerHTML,
+        iTipoETA
+        )
+
+    //downloadFiles('Raul Braghin','texte','txt')
+
+}
+
+function ExportarValores(PAC100, PAC10, PAC1, HIPO100, HIPO10, HIPO1, ALC100, ALC10, ALC1, FLU100, FLU10, FLU1, ){
+
+    DadosProcesso[0] = PAC100;
+    DadosProcesso[1] = PAC10;
+    DadosProcesso[2] = PAC1;
+    DadosProcesso[3] = HIPO100;
+    DadosProcesso[4] = HIPO10;
+    DadosProcesso[5] = HIPO1;
+    DadosProcesso[6] = ALC100;
+    DadosProcesso[7] = ALC10;
+    DadosProcesso[8] = ALC1;
+    DadosProcesso[9] = FLU100;
+    DadosProcesso[10] = FLU10;
+    DadosProcesso[11] = FLU1;
+    DadosProcesso[12] = iTempoFloc;
+    DadosProcesso[13] = itempoDec;
+    DadosProcesso[14] = Volfloc;
+    DadosProcesso[15] = VolDec;
+    DadosProcesso[16] = iTipoETA;
+
 }
 
 
@@ -406,4 +472,23 @@ function PreencCampos(v1, v2, v3, v4, v5, v6) {
         return true
     }
 
+}
+
+//Salvar o arquivo gerado
+function downloadFiles(data, file_name, file_type) {
+    var file = new Blob([data], {type: file_type});
+    if (window.navigator.msSaveOrOpenBlob) 
+        window.navigator.msSaveOrOpenBlob(file, file_name);
+    else {
+        var a = document.createElement("a"),
+                url = URL.createObjectURL(file);
+        a.href = url;
+        a.download = file_name;
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(function() {
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);  
+        }, 0); 
+    }
 }
