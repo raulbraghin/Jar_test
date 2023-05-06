@@ -155,6 +155,7 @@
 
     </div>
 
+    <!-- CALCULA DOSAGEM DA ETA -->
 
     <div id="CalculoDosagem" style="display: none;">
 
@@ -317,17 +318,17 @@
 
             <p><h3>Floculador</h3></p>
 
-            <p id="Floculador"></p>
+            <p id="TempoFloculador"></p>
+            
+            <p id="VolumeFloculador"></p>
             
             <br>
 
             <p><h3>Decantador</h3></p>
 
-            <p id="Decantador"></p>
+            <p id="TempoDecantador"></p>
 
-            <p>Volume dos decantadores e floculadores</p>
-
-            <p>Salvar arquivo em disco</p>
+            <p id="VolumeDecantador"></p>
             
             
         </div>
@@ -340,7 +341,10 @@
     <footer>
         <h2>Automação RJOS</h2>
     </footer>
+    
     <script src="jartest.js"></script>
+    <script src="GravDadosArquivo.js" type="module"></script>
+
 </body>
 
 </html>

@@ -51,7 +51,7 @@ img#EtaTorrezan, img#EtaModular {
 
 }*/
 
-h2#h2flocMod, h2#h2DecMod {
+h2#h2flocMod, h2#h2DecMod, h2#h2FlocTor, h2#h2DecTor {
     text-align: center;
     color: blue;
 }
