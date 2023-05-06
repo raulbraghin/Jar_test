@@ -1,9 +1,9 @@
 body {
     text-align: center;
     align-items: center;
-    background-image:url("imagens/sabesp\ marca\ dagua.png");
+    background-image: url("imagens/sabesp\ marca\ dagua.png");
     background-repeat: no-repeat;
-    background-attachment:fixed;
+    background-attachment: fixed;
     background-position: center;
 }
 
@@ -19,11 +19,13 @@ div#sel_eta {
 div#ImgEta {
 
     flex: 1;
-    margin:10px;
+    margin: 10px;
 
 }
 
-div#confModular, div#confTorrezan, div#confOutros {
+div#confModular,
+div#confTorrezan,
+div#confOutros {
 
     align-items: center;
     text-align: center;
@@ -51,10 +53,14 @@ img#EtaTorrezan, img#EtaModular {
 
 }*/
 
-h2#h2flocMod, h2#h2DecMod, h2#h2FlocTor, h2#h2DecTor {
+h2#h2flocMod,
+h2#h2DecMod,
+h2#h2FlocTor,
+h2#h2DecTor {
     text-align: center;
     color: blue;
 }
+
 /*
 input#nflocmod, input#nflocdiamod, input#nflochmod {
     background-color: lightblue;
@@ -104,7 +110,70 @@ div#etacon {
 
 
 
-input#vazao, input#dosPac, input#dosHIPO, input#dosALC, input#dosFLU {
+input#vazao,
+input#dosPac,
+input#dosHIPO,
+input#dosALC,
+input#dosFLU {
     background-color: lightblue;
     width: 100px;
+}
+
+table.TableDosPac {
+    border-collapse: collapse;
+    background-color: #19e6ff;
+    align-items: center;
+    margin: auto;
+    /* Tabela alinha no meio */
+}
+
+table.TableDosPac th {
+    border: 1px solid black;
+
+}
+
+table.TableDosHipo {
+    border-collapse: collapse;
+    background-color: #19e6ff;
+    align-items: center;
+    margin: auto;
+    /* Tabela alinha no meio */
+}
+
+table.TableDosHipo th {
+    border: 1px solid black;
+
+}
+
+
+table.TableDosAlc {
+    border-collapse: collapse;
+    background-color: #19e6ff;
+    align-items: center;
+    margin: auto;
+    /* Tabela alinha no meio */
+}
+
+table.TableDosAlc th {
+    border: 1px solid black;
+
+}
+
+
+table.TableDosFluor {
+    border-collapse: collapse;
+    background-color: #19e6ff;
+    align-items: center;
+    margin: auto;
+    /* Tabela alinha no meio */
+}
+
+table.TableDosFluor th {
+    border: 1px solid black;
+
+}
+
+tr#Linhas {
+    border: 1px solid black;
+    background-color: rgba(95, 252, 74, 0.575);
 }

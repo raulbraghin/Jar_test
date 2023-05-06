@@ -145,7 +145,7 @@ function CalcularVolTorrezan() {
 
     let fCompFloculador = document.querySelector('input#CompFlocTorrezan')
     let fLargFloculador = document.querySelector('input#LargFlocTorrezan')
-    let fAltFloculador  = document.querySelector('input#AltFlocTorrezan')
+    let fAltFloculador = document.querySelector('input#AltFlocTorrezan')
 
     let fVolFloculador = parseFloat(fCompFloculador.value) * parseFloat(fLargFloculador.value) * parseFloat(fAltFloculador.value)
 
@@ -277,7 +277,7 @@ function CalcDosETAModVol() {
 
         /* Calculo de tempo*/
         let iTempoFloc = parseInt(VolCadalFlocModular * 1000 / vazao.value)
-        let itempoDec = parseInt(VolCadaDecModular *1000 / (vazao.value / QuantidadeDecETAModular))
+        let itempoDec = parseInt(VolCadaDecModular * 1000 / (vazao.value / QuantidadeDecETAModular))
 
         console.log(itempoDec)
         console.log(iTempoFloc)
@@ -336,7 +336,7 @@ function calcdosETATorrezanVol() {
 
         /* Calculo de tempo*/
         let iTempoFloc = parseInt(VolCadalFlocTorrezan * 1000 / vazao.value)
-        let itempoDec = parseInt(VolCadaDecTorrezan *1000 / (vazao.value / QuantidadeDecETATorrezan))
+        let itempoDec = parseInt(VolCadaDecTorrezan * 1000 / (vazao.value / QuantidadeDecETATorrezan))
 
         console.log(itempoDec)
         console.log(iTempoFloc)
@@ -355,21 +355,21 @@ function calcdosETATorrezanVol() {
 
 function mostraresultado(PAC100, PAC10, PAC1, HIPO100, HIPO10, HIPO1, ALC100, ALC10, ALC1, FLU100, FLU10, FLU1, iTempoFloc, itempoDec) {
 
-    let resPAC100 = document.querySelector("p#resPAC100")
-    let resPAC10 = document.querySelector("p#resPAC10")
-    let resPAC1 = document.querySelector("p#resPAC1")
+    let resPAC100 = document.querySelector("td#resPAC100")
+    let resPAC10 = document.querySelector("td#resPAC10")
+    let resPAC1 = document.querySelector("td#resPAC1")
 
-    let resHIPO100 = document.querySelector("p#resHIPO100")
-    let resHIPO10 = document.querySelector("p#resHIPO10")
-    let resHIPO1 = document.querySelector("p#resHIPO1")
+    let resHIPO100 = document.querySelector("td#resHIPO100")
+    let resHIPO10 = document.querySelector("td#resHIPO10")
+    let resHIPO1 = document.querySelector("td#resHIPO1")
 
-    let resALC100 = document.querySelector("p#resALC100")
-    let resALC10 = document.querySelector("p#resALC10")
-    let resALC1 = document.querySelector("p#resALC1")
+    let resALC100 = document.querySelector("td#resALC100")
+    let resALC10 = document.querySelector("td#resALC10")
+    let resALC1 = document.querySelector("td#resALC1")
 
-    let resFLU100 = document.querySelector("p#resFLU100")
-    let resFLU10 = document.querySelector("p#resFLU10")
-    let resFLU1 = document.querySelector("p#resFLU1")
+    let resFLU100 = document.querySelector("td#resFLU100")
+    let resFLU10 = document.querySelector("td#resFLU10")
+    let resFLU1 = document.querySelector("td#resFLU1")
 
     let TempoFloc = document.querySelector("p#TempoFloculador")
     let tempoDec = document.querySelector("p#TempoDecantador")
@@ -377,6 +377,24 @@ function mostraresultado(PAC100, PAC10, PAC1, HIPO100, HIPO10, HIPO1, ALC100, AL
     let VolFloculador = document.querySelector("p#VolumeFloculador")
     let VolDecantador = document.querySelector("p#VolumeDecantador")
 
+
+    resPAC100.innerHTML = PAC100
+    resPAC10.innerHTML = PAC10
+    resPAC1.innerHTML = PAC1
+
+    resHIPO100.innerHTML = HIPO100
+    resHIPO10.innerHTML = HIPO10
+    resHIPO1.innerHTML = HIPO1
+
+    resALC100.innerHTML = ALC100
+    resALC10.innerHTML = ALC10
+    resALC1.innerHTML = ALC1
+
+    resFLU100.innerHTML = FLU100
+    resFLU10.innerHTML = FLU10
+    resFLU1.innerHTML = FLU1
+
+    /*
     resPAC100.innerHTML = `Para uma dosagem de PAC concentrado, você deve dosar ${PAC100} mL`
     resPAC10.innerHTML = `Para uma dosagem de PAC diluido a 10%, você deve dosar ${PAC10} mL`
     resPAC1.innerHTML = `Para uma dosagem de PAC diluido a 1%, você deve dosar ${PAC1} mL`
@@ -392,56 +410,57 @@ function mostraresultado(PAC100, PAC10, PAC1, HIPO100, HIPO10, HIPO1, ALC100, AL
     resFLU100.innerHTML = `Para uma dosagem de Ácido Fluorsilíssico concentrado, você deve dosar ${FLU100} mL`
     resFLU10.innerHTML = `Para uma dosagem de Ácido Fluorsilíssico diluido a 10%, você deve dosar ${FLU10} mL`
     resFLU1.innerHTML = `Para uma dosagem de Ácido Fluorsilíssico diluido a 1%, você deve dosar ${FLU1} mL`
+    */
 
     if (iTipoETA == 0) {
         TempoFloc.innerHTML = `O Tempo de cada floculador modular é ${iTempoFloc} segundos`
-    }else{
+    } else {
         TempoFloc.innerHTML = `O Tempo do floculador torrezan é ${iTempoFloc} segundos`
     }
 
     if (iTipoETA == 0) {
         tempoDec.innerHTML = `O Tempo de cada Decantador modular é ${itempoDec} segundos`
-    }else{
+    } else {
         tempoDec.innerHTML = `O Tempo de cada Decantador torrezan é ${itempoDec} segundos`
     }
 
     if (iTipoETA == 0) {
         VolFloculador.innerHTML = `O volume de cada floculador modular é ${VolCadalFlocModular.toFixed(2)} m3`
-    }else{
+    } else {
         VolFloculador.innerHTML = `O volume do floculador torrezan é ${VolCadalDecModular.toFixed(2)} m3`
     }
 
     if (iTipoETA == 0) {
         VolDecantador.innerHTML = `O volume de cada Decantador modular é ${VolCadaDecModular.toFixed(2)} m3`
-    }else{
+    } else {
         VolDecantador.innerHTML = `O volume de cada Decantador torrezan é ${VolCadaDecModular.toFixed(2)} m3`
     }
 
     ExportarValores(
-        resPAC100.innerHTML, 
+        resPAC100.innerHTML,
         resPAC10.innerHTML,
-        resPAC1.innerHTML, 
-        resHIPO100.innerHTML, 
-        resHIPO10.innerHTML, 
-        resHIPO1.innerHTML, 
-        resALC100.innerHTML, 
-        resALC10.innerHTMLALC10, 
-        resALC1.innerHTML, 
-        resFLU100.innerHTML, 
-        resFLU10.innerHTML, 
-        resFLU1.innerHTML, 
-        TempoFloc.innerHTML, 
-        tempoDec.innerHTML, 
+        resPAC1.innerHTML,
+        resHIPO100.innerHTML,
+        resHIPO10.innerHTML,
+        resHIPO1.innerHTML,
+        resALC100.innerHTML,
+        resALC10.innerHTMLALC10,
+        resALC1.innerHTML,
+        resFLU100.innerHTML,
+        resFLU10.innerHTML,
+        resFLU1.innerHTML,
+        TempoFloc.innerHTML,
+        tempoDec.innerHTML,
         VolFloculador.innerHTML,
         VolDecantador.innerHTML,
         iTipoETA
-        )
+    )
 
     //downloadFiles('Raul Braghin','texte','txt')
 
 }
 
-function ExportarValores(PAC100, PAC10, PAC1, HIPO100, HIPO10, HIPO1, ALC100, ALC10, ALC1, FLU100, FLU10, FLU1, ){
+function ExportarValores(PAC100, PAC10, PAC1, HIPO100, HIPO10, HIPO1, ALC100, ALC10, ALC1, FLU100, FLU10, FLU1,) {
 
     DadosProcesso[0] = PAC100;
     DadosProcesso[1] = PAC10;
@@ -476,19 +495,19 @@ function PreencCampos(v1, v2, v3, v4, v5, v6) {
 
 //Salvar o arquivo gerado
 function downloadFiles(data, file_name, file_type) {
-    var file = new Blob([data], {type: file_type});
-    if (window.navigator.msSaveOrOpenBlob) 
+    var file = new Blob([data], { type: file_type });
+    if (window.navigator.msSaveOrOpenBlob)
         window.navigator.msSaveOrOpenBlob(file, file_name);
     else {
         var a = document.createElement("a"),
-                url = URL.createObjectURL(file);
+            url = URL.createObjectURL(file);
         a.href = url;
         a.download = file_name;
         document.body.appendChild(a);
         a.click();
-        setTimeout(function() {
+        setTimeout(function () {
             document.body.removeChild(a);
-            window.URL.revokeObjectURL(url);  
-        }, 0); 
+            window.URL.revokeObjectURL(url);
+        }, 0);
     }
 }
