@@ -42,16 +42,6 @@ img {
 
 }
 
-/*
-img#EtaTorrezan, img#EtaModular {
-
-    text-align: center;
-    height: 200px;
-    width: 200px;
-    border-style: double;
-    border-color: black;
-
-}*/
 
 h2#h2flocMod,
 h2#h2DecMod,
@@ -60,30 +50,6 @@ h2#h2DecTor {
     text-align: center;
     color: blue;
 }
-
-/*
-input#nflocmod, input#nflocdiamod, input#nflochmod {
-    background-color: lightblue;
-    width: 100px;
-}
-
-
-input#ndecmod, input#ndecdiamod, input#ndechmod {
-    background-color: lightblue;
-    width: 100px;
-}
-
-input#CompFlocTorrezan, input#LargFlocTorrezan, input#AltFlocTorrezan {
-    background-color: lightblue;
-    width: 100px;
-}
-
-
-input#iNumDecMódulo, input#CompDecTorrezan, input#LargDecTorrezan, input#AltDecTorrezan {
-    background-color: lightblue;
-    width: 100px;
-}
-*/
 
 input[type="number"] {
     background-color: lightblue;
@@ -100,14 +66,10 @@ body {
     text-align: center;
 }
 
-div#etavol {
-    text-align: center;
-}
-
+div#etavol,
 div#etacon {
     text-align: center;
 }
-
 
 
 input#vazao,
@@ -119,48 +81,11 @@ input#dosFLU {
     width: 100px;
 }
 
-table.TableDosPac {
-    border-collapse: collapse;
-    background-color: #19e6ff;
-    align-items: center;
-    margin: auto;
-    /* Tabela alinha no meio */
-}
-
-table.TableDosPac th {
-    border: 1px solid black;
-
-}
-
-table.TableDosHipo {
-    border-collapse: collapse;
-    background-color: #19e6ff;
-    align-items: center;
-    margin: auto;
-    /* Tabela alinha no meio */
-}
-
-table.TableDosHipo th {
-    border: 1px solid black;
-
-}
-
-
-table.TableDosAlc {
-    border-collapse: collapse;
-    background-color: #19e6ff;
-    align-items: center;
-    margin: auto;
-    /* Tabela alinha no meio */
-}
-
-table.TableDosAlc th {
-    border: 1px solid black;
-
-}
-
-
+table.TableDosPac,
+table.TableDosHipo,
+table.TableDosAlc,
 table.TableDosFluor {
+    width: 300px;
     border-collapse: collapse;
     background-color: #19e6ff;
     align-items: center;
@@ -168,6 +93,9 @@ table.TableDosFluor {
     /* Tabela alinha no meio */
 }
 
+table.TableDosPac th,
+table.TableDosHipo th,
+table.TableDosAlc th,
 table.TableDosFluor th {
     border: 1px solid black;
 

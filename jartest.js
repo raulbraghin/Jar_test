@@ -3,33 +3,34 @@ link ara geração do arquivo para gravar os dados
 https://egghead.io/lessons/node-js-write-or-append-to-a-file-in-node-js-with-fs-writefile-and-fs-writefilesync
 */
 
+//const { Console } = require('console')
+
 /*
 link para utilização das funções export e import
 https://blog.betrybe.com/tecnologia/import-e-export/#:~:text=Para%20importar%20qualquer%20vari%C3%A1vel%20ou,erro%20na%20execu%C3%A7%C3%A3o%20do%20c%C3%B3digo.
 */
 
-//export var DadosProcesso = []  //Dados a serem exportados
 
 //Variáveis globais
 var iTipoETA = ''
 var iTipoDOS = ''
 
 var QuantidadeFlocETAModular
-var VolCadalFlocModular
+var VolCadaFlocModular
 var QuantidadeDecETAModular
 var VolCadaDecModular
 
-var VolCadalFlocTorrezan
+var VolCadaFlocTorrezan
 var QuantidadeDecETATorrezan
 var VolCadaDecTorrezan
 
-var CalculoConcentracao = false
+//var CalculoConcentracao = false
 
 function SalvaTipoETA() {
 
     let tipoEta = document.getElementsByName('selecao')
 
-    let tipoetaselecionada = ''
+    //let tipoetaselecionada = ''
     //let iTipoETA = ''
 
     if (tipoEta[0].checked) {
@@ -56,9 +57,10 @@ function SalvaTipoETA() {
 
     MostrarDivTipoETA(iTipoETA) //Chama a Função que mostra a div da ETA
 
+    /*
     if (iTipoETA != 99) {
         alert('Seleção ' + iTipoETA)
-    }
+    }*/
 
 
 }
@@ -110,8 +112,8 @@ function CalcularVolModular() {
     let fhFlocmod = document.querySelector('input#nflochmod')
 
     let fareaFlocMod = ((parseFloat(fdiaFlocmod.value) / 2.0) ** 2) * Math.PI
-    let fvolFlocMod = fareaFlocMod * parseFloat(fhFlocmod.value)    //Volume individual de cada decantador
-    let fVolTotalFlocMod = iQuantFlocmod * fvolFlocMod              //Volume total dos decantadores em serie
+    let fvolFlocMod = fareaFlocMod * parseFloat(fhFlocmod.value)    //Volume individual de cada floculador
+    let fVolTotalFlocMod = iQuantFlocmod * fvolFlocMod              //Volume total dos floculadores em serie
 
 
     let iQuantDecMod = document.querySelector('input#ndecmod')
@@ -133,7 +135,7 @@ function CalcularVolModular() {
 
     //Manda valores para variáveis globais
     QuantidadeFlocETAModular = iQuantFlocmod.value;
-    VolCadalFlocModular = fvolFlocMod;
+    VolCadaFlocModular = fvolFlocMod;
     QuantidadeDecETAModular = iQuantDecMod.value;
     VolCadaDecModular = fvolDecMod;
 
@@ -141,7 +143,7 @@ function CalcularVolModular() {
 
 function CalcularVolTorrezan() {
 
-    alert('Função Calculo VolTorrezan')
+    //alert('Função Calculo VolTorrezan')
 
     let fCompFloculador = document.querySelector('input#CompFlocTorrezan')
     let fLargFloculador = document.querySelector('input#LargFlocTorrezan')
@@ -172,67 +174,36 @@ function CalcularVolTorrezan() {
     }
 
     //Manda valores para variáveis globais
-    VolCadalFlocTorrezan = fVolFloculador
+    VolCadaFlocTorrezan = fVolFloculador
     QuantidadeDecETATorrezan = iNumeroDecantadores.value
     VolCadaDecTorrezan = fVolDecantador
 
 }
 
 
-/*
-function SalvaTipoCalculo() {
-
-    let tipoDOS = document.getElementsByName('selecaodos')
-
-
-    if (tipoDOS[0].checked) {
-
-        iTipoDOS = 0
-
-        let mostra = document.getElementById("etavol")
-        mostra.style.display = "block"
-
-        mostra = document.getElementById("etacon")
-        mostra.style.display = "none"
-
-    }
-    else if (tipoDOS[1].checked) {
-
-        iTipoDOS = 1
-
-        let mostra = document.getElementById("etacon")
-        mostra.style.display = "block"
-
-        mostra = document.getElementById("etavol")
-        mostra.style.display = "none"
-
-    }
-}*/
-
-
 
 function Calculo() {
 
     console.log('variável alert iTipoEta = ' + iTipoETA)
-    console.log('variável alert iTipoDos = ' + iTipoDOS)
+    //console.log('variável alert iTipoDos = ' + iTipoDOS)
 
-    if (iTipoETA == 0 && iTipoDOS == 0) {  //ETA Modular por volume
+    if (iTipoETA == 0 /*&& iTipoDOS == 0*/) {  //ETA Modular por volume
 
         console.log('calcdosETAModVol')
         CalcDosETAModVol()
 
-    } else if (iTipoETA == 0 && iTipoDOS == 1) {   //ETA Modular por concentração
+    } /*else if (iTipoETA == 0 && iTipoDOS == 1) {   //ETA Modular por concentração
         calcdosETAModCon()
         console.log('calcdosETAModCon')
 
-    } else if (iTipoETA == 1 && iTipoDOS == 0) {
+    } */else if (iTipoETA == 1 /*&& iTipoDOS == 0*/) {
         calcdosETATorrezanVol()
         console.log('calcdosETATorrezanVol')
 
-    } else if (iTipoETA == 1 && iTipoDOS == 1) {
+    } /*else if (iTipoETA == 1 && iTipoDOS == 1) {
         calcdosETATorrezanCon()
         console.log('calcdosETATorrezanCon')
-    }
+    }*/
 
 }
 
@@ -276,7 +247,7 @@ function CalcDosETAModVol() {
         let FLU1 = (FLU100 * 100).toFixed(2)
 
         /* Calculo de tempo*/
-        let iTempoFloc = parseInt(VolCadalFlocModular * 1000 / vazao.value)
+        let iTempoFloc = parseInt(VolCadaFlocModular * 1000 / vazao.value)
         let itempoDec = parseInt(VolCadaDecModular * 1000 / (vazao.value / QuantidadeDecETAModular))
 
         console.log(itempoDec)
@@ -335,7 +306,7 @@ function calcdosETATorrezanVol() {
         let FLU1 = (FLU100 * 100).toFixed(2)
 
         /* Calculo de tempo*/
-        let iTempoFloc = parseInt(VolCadalFlocTorrezan * 1000 / vazao.value)
+        let iTempoFloc = parseInt(VolCadaFlocTorrezan * 1000 / vazao.value)
         let itempoDec = parseInt(VolCadaDecTorrezan * 1000 / (vazao.value / QuantidadeDecETATorrezan))
 
         console.log(itempoDec)
@@ -394,25 +365,8 @@ function mostraresultado(PAC100, PAC10, PAC1, HIPO100, HIPO10, HIPO1, ALC100, AL
     resFLU10.innerHTML = FLU10
     resFLU1.innerHTML = FLU1
 
-    /*
-    resPAC100.innerHTML = `Para uma dosagem de PAC concentrado, você deve dosar ${PAC100} mL`
-    resPAC10.innerHTML = `Para uma dosagem de PAC diluido a 10%, você deve dosar ${PAC10} mL`
-    resPAC1.innerHTML = `Para uma dosagem de PAC diluido a 1%, você deve dosar ${PAC1} mL`
 
-    resHIPO100.innerHTML = `Para uma dosagem de hipoclorito concentrado, você deve dosar ${HIPO100} mL`
-    resHIPO10.innerHTML = `Para uma dosagem de hipoclorito diluido a 10%, você deve dosar ${HIPO10} mL`
-    resHIPO1.innerHTML = `Para uma dosagem de hipoclorito diluido a 1%, você deve dosar ${HIPO1} mL`
-
-    resALC100.innerHTML = `Para uma dosagem de alcalinizante concentrado, você deve dosar ${ALC100} mL`
-    resALC10.innerHTML = `Para uma dosagem de alcalinizante diluido a 10%, você deve dosar ${ALC10} mL`
-    resALC1.innerHTML = `Para uma dosagem de alcalinizante diluido a 1%, você deve dosar ${ALC1} mL`
-
-    resFLU100.innerHTML = `Para uma dosagem de Ácido Fluorsilíssico concentrado, você deve dosar ${FLU100} mL`
-    resFLU10.innerHTML = `Para uma dosagem de Ácido Fluorsilíssico diluido a 10%, você deve dosar ${FLU10} mL`
-    resFLU1.innerHTML = `Para uma dosagem de Ácido Fluorsilíssico diluido a 1%, você deve dosar ${FLU1} mL`
-    */
-
-    if (iTipoETA == 0) {
+    if (iTipoETA == 0) {    //Se 0 então ETA Modular senão ETA torrezan
         TempoFloc.innerHTML = `O Tempo de cada floculador modular é ${iTempoFloc} segundos`
     } else {
         TempoFloc.innerHTML = `O Tempo do floculador torrezan é ${iTempoFloc} segundos`
@@ -424,64 +378,50 @@ function mostraresultado(PAC100, PAC10, PAC1, HIPO100, HIPO10, HIPO1, ALC100, AL
         tempoDec.innerHTML = `O Tempo de cada Decantador torrezan é ${itempoDec} segundos`
     }
 
+    var VolumeDecantadorETA
+    var VolumeFloculadorETA
+
     if (iTipoETA == 0) {
-        VolFloculador.innerHTML = `O volume de cada floculador modular é ${VolCadalFlocModular.toFixed(2)} m3`
+        VolFloculador.innerHTML = `O volume de cada floculador modular é ${VolCadaFlocModular.toFixed(2)} m3`
+        VolumeFloculadorETA = VolCadaFlocModular.toFixed(2)
     } else {
-        VolFloculador.innerHTML = `O volume do floculador torrezan é ${VolCadalDecModular.toFixed(2)} m3`
+        VolFloculador.innerHTML = `O volume do floculador torrezan é ${VolCadaFlocTorrezan.toFixed(2)} m3`
+        VolumeFloculadorETA = VolCadaFlocTorrezan.toFixed(2)
     }
 
     if (iTipoETA == 0) {
         VolDecantador.innerHTML = `O volume de cada Decantador modular é ${VolCadaDecModular.toFixed(2)} m3`
+        VolumeDecantadorETA = VolCadaDecModular.toFixed(2)
     } else {
-        VolDecantador.innerHTML = `O volume de cada Decantador torrezan é ${VolCadaDecModular.toFixed(2)} m3`
+        VolDecantador.innerHTML = `O volume de cada Decantador torrezan é ${VolCadaDecTorrezan.toFixed(2)} m3`
+        VolumeDecantadorETA = VolCadaDecTorrezan.toFixed(2)
     }
 
+    var NomeArquivo = NomeArquivoTexto()
+
     ExportarValores(
-        resPAC100.innerHTML,
-        resPAC10.innerHTML,
-        resPAC1.innerHTML,
-        resHIPO100.innerHTML,
-        resHIPO10.innerHTML,
-        resHIPO1.innerHTML,
-        resALC100.innerHTML,
-        resALC10.innerHTMLALC10,
-        resALC1.innerHTML,
-        resFLU100.innerHTML,
-        resFLU10.innerHTML,
-        resFLU1.innerHTML,
-        TempoFloc.innerHTML,
-        tempoDec.innerHTML,
-        VolFloculador.innerHTML,
-        VolDecantador.innerHTML,
-        iTipoETA
+        PAC100,
+        PAC10,
+        PAC1,
+        HIPO100,
+        HIPO10,
+        HIPO1,
+        ALC100,
+        ALC10,
+        ALC1,
+        FLU100,
+        FLU10,
+        FLU1,
+        iTempoFloc,
+        itempoDec,
+        VolumeFloculadorETA,
+        VolumeDecantadorETA,
+        NomeArquivo
     )
 
-    //downloadFiles('Raul Braghin','texte','txt')
+
 
 }
-
-function ExportarValores(PAC100, PAC10, PAC1, HIPO100, HIPO10, HIPO1, ALC100, ALC10, ALC1, FLU100, FLU10, FLU1,) {
-
-    DadosProcesso[0] = PAC100;
-    DadosProcesso[1] = PAC10;
-    DadosProcesso[2] = PAC1;
-    DadosProcesso[3] = HIPO100;
-    DadosProcesso[4] = HIPO10;
-    DadosProcesso[5] = HIPO1;
-    DadosProcesso[6] = ALC100;
-    DadosProcesso[7] = ALC10;
-    DadosProcesso[8] = ALC1;
-    DadosProcesso[9] = FLU100;
-    DadosProcesso[10] = FLU10;
-    DadosProcesso[11] = FLU1;
-    DadosProcesso[12] = iTempoFloc;
-    DadosProcesso[13] = itempoDec;
-    DadosProcesso[14] = Volfloc;
-    DadosProcesso[15] = VolDec;
-    DadosProcesso[16] = iTipoETA;
-
-}
-
 
 function PreencCampos(v1, v2, v3, v4, v5, v6) {
 
@@ -493,21 +433,86 @@ function PreencCampos(v1, v2, v3, v4, v5, v6) {
 
 }
 
-//Salvar o arquivo gerado
-function downloadFiles(data, file_name, file_type) {
-    var file = new Blob([data], { type: file_type });
-    if (window.navigator.msSaveOrOpenBlob)
-        window.navigator.msSaveOrOpenBlob(file, file_name);
-    else {
-        var a = document.createElement("a"),
-            url = URL.createObjectURL(file);
-        a.href = url;
-        a.download = file_name;
-        document.body.appendChild(a);
-        a.click();
-        setTimeout(function () {
-            document.body.removeChild(a);
-            window.URL.revokeObjectURL(url);
-        }, 0);
+
+function ExportarValores(PAC100, PAC10, PAC1, HIPO100, HIPO10, HIPO1, ALC100, ALC10, ALC1, FLU100, FLU10, FLU1, iTempoFloc, itempoDec, VolumeFloculadorETA, VolumeDecantadorETA, NomeArquivo) {
+
+    console.log('Dentro da Função ExportarValores')
+
+    var DadosProcesso = new Array(16)
+    var DadosConcatenados = "DOSAGENS E TEMPOS UTILIZADOS NO JARTEST\r\n"
+
+    DadosProcesso[0] = 'Dosagem de PAC Concentrada = ' + String(PAC100) + 'mL'
+    DadosProcesso[1] = 'Dosagem de PAC 10% = ' + String(PAC10) + 'mL'
+    DadosProcesso[2] = 'Dosagem de PAC 1% = ' + String(PAC1) + 'mL'
+    DadosProcesso[3] = 'Dosagem de Hipoclorito na pré Concentrada = ' + String(HIPO100) + 'mL'
+    DadosProcesso[4] = 'Dosagem de Hipoclorito na pré 10% = ' + String(HIPO10) + 'mL'
+    DadosProcesso[5] = 'Dosagem de Hipoclorito na pré 1% = ' + String(HIPO1) + 'mL'
+    DadosProcesso[6] = 'Dosagem de Alcalinizante Concentrada = ' + String(ALC100) + 'mL'
+    DadosProcesso[7] = 'Dosagem de Alcalinizante 10% = ' + String(ALC10) + 'mL'
+    DadosProcesso[8] = 'Dosagem de Alcalinizante 1% = ' + String(ALC1) + 'mL'
+    DadosProcesso[9] = 'Dosagem de Fluoreto Concentrada = ' + String(FLU100) + 'mL'
+    DadosProcesso[10] = 'Dosagem de Fluoreto 10% = ' + String(FLU10) + 'mL'
+    DadosProcesso[11] = 'Dosagem de Fluoreto 1% = ' + String(FLU1) + 'mL'
+    DadosProcesso[12] = 'Tempo do Floculador no Jar Test ' + String(iTempoFloc) + ' segundos'
+    DadosProcesso[13] = 'Tempo do Decantador no Jar Test ' + String(itempoDec) + ' segundos'
+    DadosProcesso[14] = 'Volume de cada Floculador da ETA ' + String(VolumeFloculadorETA) + ' m³'
+    DadosProcesso[15] = 'Volume de cada Decantador da ETA ' + String(VolumeDecantadorETA) + ' m³'
+
+    /*for (let i = 0; i < DadosProcesso.length; i++) {
+
+        console.log(DadosProcesso[i])
+
+    }*/
+
+    for (let i = 0; i < DadosProcesso.length; i++) {
+
+        DadosConcatenados += DadosProcesso[i] + "\r\n"  
+
     }
+
+    DownloadFile(DadosConcatenados, NomeArquivo)
+
 }
+
+function NomeArquivoTexto() {
+
+    console.log('Dentro Função NomeArquivoTexto')
+
+    var DataAtualizada = new Date()
+
+    var dia = String(DataAtualizada.getDate())
+    var mes = String(DataAtualizada.getMonth())
+    var ano = String(DataAtualizada.getFullYear())
+    var hora = String(DataAtualizada.getHours())
+    var minuto = String(DataAtualizada.getMinutes())
+    var segundo = String(DataAtualizada.getSeconds())
+
+    var NomeArquivo = 'JarTest_' + ano + '_' + mes + '_' + dia + '_' + hora + '_' + minuto + '_' + segundo + '.txt'
+
+    console.log(NomeArquivo);
+
+    return NomeArquivo
+
+
+}
+
+
+//Salvar o arquivo gerado
+function DownloadFile(data, file_name, file_type) {
+    if (!file_type) {
+        file_type = 'application/octet-stream';
+    }
+
+    var file = new Blob([data], { type: file_type });
+    var a = document.createElement("a"),
+        url = URL.createObjectURL(file);
+    a.href = url;
+    a.download = file_name;
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function () {
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+    }, 0);
+}
+

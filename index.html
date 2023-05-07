@@ -202,254 +202,216 @@
 
 
 
-        <div id="dosJarTest" style="display: none;">
-
-            <br>
-
-            <p>
-            <h2>Para cada Jarro de 2 Litros devem ser dosados</h2>
-            </p>
-
-
-            <!-- 
-            <p><h3>Dosagem de PAC</h3></p>
-
-            <p id="resPAC100"></p>
-
-            <p id="resPAC10"></p>
-
-            <p id="resPAC1"></p>
-
-            <br>
-
-            <p><h3>Dosagem de Hipoclorito</h3></p>
-
-            <p id="resHIPO100"></p>
-
-            <p id="resHIPO10"></p>
-
-            <p id="resHIPO1"></p>
-
-            <br>
-
-            <p><h3>Dosagem de Alcalinizante</h3></p>
-
-            <p id="resALC100"></p>
-
-            <p id="resALC10"></p>
-
-            <p id="resALC1"></p>
-
-            <br>
-
-            <p><h3>Dosagem de Ácido Fluorsilíssico</h3></p>
-
-            <p id="resFLU100"></p>
-
-            <p id="resFLU10"></p>
-
-            <p id="resFLU1"></p>
-
-            -->
-
-            <table class="TableDosPac">
-
-                <thead>
-
-                    <tr>
-                        <th colspan="2">Dosagem de PAC</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-
-                    <tr>
-                        <th>Concentração</th>
-                        <th>Dosagem (mL)</th>
-                    </tr>
-
-                    <tr id="Linhas">
-                        <td>100%</td>
-                        <td id="resPAC100"></td>
-                    </tr>
-
-                    <tr id="Linhas">
-                        <td>10%</td>
-                        <td id="resPAC10"></td>
-                    </tr>
-
-                    <tr id="Linhas">
-                        <td>1%</td>
-                        <td id="resPAC1"></td>
-                    </tr>
-                </tbody>
-
-
-
-
-            </table>
-
-            <br>
-
-            <table class="TableDosHipo">
-
-                <thead>
-
-                    <tr>
-                        <th colspan="2">Dosagem de Hipoclorito</th>
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                    <tr>
-                        <th>Concentração</th>
-                        <th>Dosagem (mL)</th>
-                    </tr>
-
-                    <tr id="Linhas">
-                        <td>100%</td>
-                        <td id="resHIPO100"></td>
-                    </tr>
-
-                    <tr id="Linhas">
-                        <td>10%</td>
-                        <td id="resHIPO10"></td>
-                    </tr>
-
-                    <tr id="Linhas">
-                        <td>1%</td>
-                        <td id="resHIPO1"></td>
-                    </tr>
-                </tbody>
-
-
-
-
-            </table>
-
-
-
-            <br>
-
-            <table class="TableDosAlc">
-
-                <thead>
-
-                    <tr>
-                        <th colspan="2">Dosagem de Alcalinizante</th>
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                    <tr>
-                        <th>Concentração</th>
-                        <th>Dosagem (mL)</th>
-                    </tr>
-
-                    <tr id="Linhas">
-                        <td>100%</td>
-                        <td id="resALC100"></td>
-                    </tr>
-
-                    <tr id="Linhas">
-                        <td>10%</td>
-                        <td id="resALC10"></td>
-                    </tr>
-
-                    <tr id="Linhas">
-                        <td>1%</td>
-                        <td id="resALC1"></td>
-                    </tr>
-                </tbody>
-
-
-
-
-            </table>
-
-
-            <br>
-
-
-            <table class="TableDosFluor">
-
-                <thead>
-
-                    <tr>
-                        <th colspan="2">Dosagem de Fluoreto</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-
-                    <tr>
-                        <th>Concentração</th>
-                        <th>Dosagem (mL)</th>
-                    </tr>
-
-                    <tr id="Linhas">
-                        <td>100%</td>
-                        <td id="resFLU100"></td>
-                    </tr>
-
-                    <tr id="Linhas">
-                        <td>10%</td>
-                        <td id="resFLU10"></td>
-                    </tr>
-
-                    <tr id="Linhas">
-                        <td>1%</td>
-                        <td id="resFLU1"></td>
-                    </tr>
-                </tbody>
-
-
-
-
-            </table>
-
-            <br>
-
-            <p>
-            <h2>Devem ser configurados os seguintes tempos no jartest</h2>
-            </p>
-
-            <p>
-            <h3>Floculador</h3>
-            </p>
-
-            <p id="TempoFloculador"></p>
-
-            <p id="VolumeFloculador"></p>
-
-            <br>
-
-            <p>
-            <h3>Decantador</h3>
-            </p>
-
-            <p id="TempoDecantador"></p>
-
-            <p id="VolumeDecantador"></p>
-
-
-        </div>
-
-
 
 
     </div>
+
+
+    <div id="dosJarTest" style="display: none;">
+
+        <br>
+
+        <p>
+        <h2>Para cada Jarro de 2 Litros devem ser dosados</h2>
+        </p>
+
+
+        <table class="TableDosPac">
+
+            <thead>
+
+                <tr>
+                    <th colspan="2">Dosagem de PAC</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <th>Concentração</th>
+                    <th>Dosagem (mL)</th>
+                </tr>
+
+                <tr id="Linhas">
+                    <td>100%</td>
+                    <td id="resPAC100"></td>
+                </tr>
+
+                <tr id="Linhas">
+                    <td>10%</td>
+                    <td id="resPAC10"></td>
+                </tr>
+
+                <tr id="Linhas">
+                    <td>1%</td>
+                    <td id="resPAC1"></td>
+                </tr>
+            </tbody>
+
+
+
+
+        </table>
+
+        <br>
+
+        <table class="TableDosHipo">
+
+            <thead>
+
+                <tr>
+                    <th colspan="2">Dosagem de Hipoclorito</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <th>Concentração</th>
+                    <th>Dosagem (mL)</th>
+                </tr>
+
+                <tr id="Linhas">
+                    <td>100%</td>
+                    <td id="resHIPO100"></td>
+                </tr>
+
+                <tr id="Linhas">
+                    <td>10%</td>
+                    <td id="resHIPO10"></td>
+                </tr>
+
+                <tr id="Linhas">
+                    <td>1%</td>
+                    <td id="resHIPO1"></td>
+                </tr>
+            </tbody>
+
+
+
+
+        </table>
+
+
+
+        <br>
+
+        <table class="TableDosAlc">
+
+            <thead>
+
+                <tr>
+                    <th colspan="2">Dosagem de Alcalinizante</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <th>Concentração</th>
+                    <th>Dosagem (mL)</th>
+                </tr>
+
+                <tr id="Linhas">
+                    <td>100%</td>
+                    <td id="resALC100"></td>
+                </tr>
+
+                <tr id="Linhas">
+                    <td>10%</td>
+                    <td id="resALC10"></td>
+                </tr>
+
+                <tr id="Linhas">
+                    <td>1%</td>
+                    <td id="resALC1"></td>
+                </tr>
+            </tbody>
+
+
+
+
+        </table>
+
+
+        <br>
+
+
+        <table class="TableDosFluor">
+
+            <thead>
+
+                <tr>
+                    <th colspan="2">Dosagem de Fluoreto</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <th>Concentração</th>
+                    <th>Dosagem (mL)</th>
+                </tr>
+
+                <tr id="Linhas">
+                    <td>100%</td>
+                    <td id="resFLU100"></td>
+                </tr>
+
+                <tr id="Linhas">
+                    <td>10%</td>
+                    <td id="resFLU10"></td>
+                </tr>
+
+                <tr id="Linhas">
+                    <td>1%</td>
+                    <td id="resFLU1"></td>
+                </tr>
+            </tbody>
+
+
+
+
+        </table>
+
+        <br>
+
+        <p>
+        <h2>Devem ser configurados os seguintes tempos no jartest</h2>
+        </p>
+
+        <p>
+        <h3>Floculador</h3>
+        </p>
+
+        <p id="TempoFloculador"></p>
+
+        <p id="VolumeFloculador"></p>
+
+        <br>
+
+        <p>
+        <h3>Decantador</h3>
+        </p>
+
+        <p id="TempoDecantador"></p>
+
+        <p id="VolumeDecantador"></p>
+
+        <br>
+
+
+    </div>
+
+
 
     <footer>
         <h2>Automação RJOS</h2>
     </footer>
 
     <script src="jartest.js"></script>
-    <script src="GravDadosArquivo.js" type="module"></script>
 
 </body>
 
