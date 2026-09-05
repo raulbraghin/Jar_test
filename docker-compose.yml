@@ -1,0 +1,57 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: jartest_postgres_db
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-eta_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-eta_password_secure}
+      POSTGRES_DB: ${POSTGRES_DB:-eta_db}
+    ports:
+      - "${POSTGRES_PORT:-5433}:5432"
+    volumes:
+      - jartest_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-eta_user} -d ${POSTGRES_DB:-eta_db}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build: ./backend
+    container_name: jartest_fastapi_app
+    restart: always
+    environment:
+      DATABASE_URL: ${DATABASE_URL:-postgresql+psycopg://${POSTGRES_USER:-eta_user}:${POSTGRES_PASSWORD:-eta_password_secure}@${POSTGRES_HOST:-db}:5432/${POSTGRES_DB:-eta_db}}
+      SECRET_KEY: ${SECRET_KEY:-jartest-secret-key-change-in-prod}
+      ALGORITHM: HS256
+      ACCESS_TOKEN_EXPIRE_MINUTES: ${ACCESS_TOKEN_EXPIRE_MINUTES:-60}
+      REFRESH_TOKEN_EXPIRE_DAYS: ${REFRESH_TOKEN_EXPIRE_DAYS:-7}
+      CORS_ORIGINS: '${CORS_ORIGINS:-["*"]}'
+      FRONTEND_URL: ${FRONTEND_URL:-http://localhost:8002}
+      SMTP_HOST: ${SMTP_HOST:-smtp.gmail.com}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_USER: ${SMTP_USER:-sidecc.r.transmissao@gmail.com}
+      SMTP_PASSWORD: ${SMTP_PASSWORD:-bups dzsw kowi oqxm}
+      SMTP_FROM: ${SMTP_FROM:-sidecc.r.transmissao@gmail.com}
+      SMTP_TLS: ${SMTP_TLS:-true}
+      ADMIN_EMAIL: ${ADMIN_EMAIL:-admin@jartest.com}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-admin123}
+      ADMIN_NOME: ${ADMIN_NOME:-Administrador}
+    ports:
+      - "${BACKEND_PORT:-8001}:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  frontend:
+    build: ./frontend
+    container_name: jartest_react_app
+    restart: always
+    ports:
+      - "${FRONTEND_PORT:-8002}:80"
+    depends_on:
+      - backend
+
+volumes:
+  jartest_postgres_data:
