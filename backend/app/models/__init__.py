@@ -3,6 +3,7 @@ from app.models.projeto import Projeto
 from app.models.configuracao import ConfiguracaoETA
 from app.models.dosagem import DosagensPlanta
 from app.models.ensaio import AguaBruta, ResultadoJarro
+from app.models.pagamento import Pagamento
 
 __all__ = [
     "User",
@@ -11,4 +12,5 @@ __all__ = [
     "DosagensPlanta",
     "AguaBruta",
     "ResultadoJarro",
+    "Pagamento",
 ]

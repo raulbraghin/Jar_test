@@ -11,6 +11,7 @@ from app.api.v1 import (
     auth,
     calculos,
     ensaios,
+    pagamentos,
     projetos,
     relatorio,
     users,
@@ -107,6 +108,7 @@ app.include_router(projetos.router, prefix=API_PREFIX)
 app.include_router(calculos.router, prefix=API_PREFIX)
 app.include_router(ensaios.router, prefix=API_PREFIX)
 app.include_router(relatorio.router, prefix=API_PREFIX)
+app.include_router(pagamentos.router, prefix=API_PREFIX)
 
 
 @app.get("/health")

@@ -9,6 +9,7 @@ from app.models import (  # noqa: F401  (garante que todos os models sejam regis
     configuracao,
     dosagem,
     ensaio,
+    pagamento,
     projeto,
     user,
 )

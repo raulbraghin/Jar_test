@@ -26,6 +26,34 @@ export interface User {
   cep?: string | null
 }
 
+export type Role = 'admin' | 'engenheiro'
+
+export interface PlanoDisponivel {
+  tipo: string
+  preco: number
+  dias: number
+}
+
+export interface UsoResponse {
+  role: string
+  configurado: boolean
+  pago: boolean
+  plano_ate: string | null
+  usados: number
+  limite: number
+  janela_dias: number
+  liberado: boolean
+  planos: PlanoDisponivel[]
+}
+
+export interface ConcederResponse {
+  mensagem: string
+  usuario: string
+  plano_sempre: boolean
+  plano_ate: string | null
+  pago: boolean
+}
+
 export interface TokenResponse {
   access_token: string
   refresh_token: string

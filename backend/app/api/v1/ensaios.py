@@ -5,6 +5,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy import delete, select
 from sqlalchemy.orm import Session
 
+from app.core.config import settings
 from app.core.security import get_current_user
 from app.db.session import get_db
 from app.models.dosagem import DosagensPlanta
@@ -18,6 +19,7 @@ from app.schemas.ensaio import (
     ResultadoJarroCreate,
     ResultadoJarroOut,
 )
+from app.services import planos
 from app.services.calculos import avaliar_jarro, ml_jarro_para_ppm, ppm_jarro_para_ml
 
 router = APIRouter(prefix="/projetos/{projeto_id}/ensaio", tags=["ensaios"])
@@ -28,6 +30,26 @@ def _verificar_projeto(projeto_id: uuid.UUID, user_id: uuid.UUID, db: Session) -
     if not projeto:
         raise HTTPException(status_code=404, detail="Projeto não encontrado")
     return projeto
+
+
+def _verificar_limite_gratis(user: User) -> None:
+    """Plano grátis: no máx. LIMITE_GRATIS_ENSAIOS por janela deslizante."""
+    if planos.usuario_premium(user):
+        return
+    usados = planos.usos_na_janela(user)
+    if usados >= settings.LIMITE_GRATIS_ENSAIOS:
+        raise HTTPException(
+            status_code=402,
+            detail={
+                "code": "LIMITE_ATINGIDO",
+                "mensagem": (
+                    f"Você atingiu o limite de ensaios do plano grátis "
+                    f"({usados}/{settings.LIMITE_GRATIS_ENSAIOS} por "
+                    f"{settings.JANELA_GRATIS_DIAS} dias). Assine um plano para "
+                    "ensaios ilimitados."
+                ),
+            },
+        )
 
 
 @router.post("/agua-bruta", response_model=AguaBrutaOut)
@@ -64,6 +86,7 @@ def salvar_jarros(
     current_user: User = Depends(get_current_user),
 ):
     _verificar_projeto(projeto_id, current_user.id, db)
+    _verificar_limite_gratis(current_user)
     ab = db.scalar(select(AguaBruta).where(AguaBruta.projeto_id == projeto_id))
     turbidez_bruta = ab.turbidez if ab else 0.0
     cor_bruta = ab.cor_aparente if ab else 0.0
@@ -133,6 +156,12 @@ def salvar_jarros(
         novos_jarros.append(jarro)
 
     db.commit()
+
+    # Plano grátis: registra o ensaio usado apenas após salvar com sucesso.
+    if not planos.usuario_premium(current_user):
+        planos.registrar_uso(current_user)
+        db.commit()
+
     for j in novos_jarros:
         db.refresh(j)
 

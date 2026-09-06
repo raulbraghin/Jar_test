@@ -63,6 +63,12 @@ api.interceptors.response.use(
       }
       window.dispatchEvent(new Event('jartest:logout'))
     }
+    const data = error.response?.data as
+      | { detail?: { code?: string } }
+      | undefined
+    if (error.response?.status === 402 && data?.detail?.code === 'LIMITE_ATINGIDO') {
+      window.location.assign('/plano')
+    }
     return Promise.reject(error)
   },
 )

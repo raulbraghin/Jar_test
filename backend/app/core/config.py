@@ -29,10 +29,15 @@ class Settings(BaseSettings):
     SMTP_FROM: str = ""
     SMTP_TLS: bool = True
 
-    # Planos pagos (futuro)
-    PLANO_MENSAL_PRECO: float = 9.99
-    PLANO_TRIMESTRAL_PRECO: float = 26.99
-    PLANO_ANUAL_PRECO: float = 99.99
+    # ── Mercado Pago / Planos pagos ────────────────────────────────────────
+    MERCADOPAGO_ACCESS_TOKEN: str = ""
+    MERCADOPAGO_WEBHOOK_SECRET: str = ""
+    MERCADOPAGO_API_BASE: str = "https://api.mercadopago.com"
+
+    # Preços definidos pela equipe (ver docs/PLANO_PAGAMENTOS_ADMIN.md)
+    PLANO_MENSAL_PRECO: float = 4.99
+    PLANO_TRIMESTRAL_PRECO: float = 14.99
+    PLANO_ANUAL_PRECO: float = 49.99
     PLANO_MENSAL_DIAS: int = 30
     PLANO_TRIMESTRAL_DIAS: int = 90
     PLANO_ANUAL_DIAS: int = 365

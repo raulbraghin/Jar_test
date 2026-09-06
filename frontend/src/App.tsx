@@ -2,12 +2,14 @@ import { ReactNode } from 'react'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { AuthProvider, useAuth } from './auth/AuthContext'
 import Layout from './components/Layout'
+import Admin from './pages/Admin'
 import Contrato from './pages/Contrato'
 import Dashboard from './pages/Dashboard'
 import EnsaioJarTest from './pages/EnsaioJarTest'
 import Login from './pages/Login'
 import Perfil from './pages/Perfil'
 import Plano from './pages/Plano'
+import PlanoStatus from './pages/PlanoStatus'
 import ProjetoForm from './pages/ProjetoForm'
 import Registrar from './pages/Registrar'
 import Relatorio from './pages/Relatorio'
@@ -26,6 +28,12 @@ function Protected({ children, requireComplete = true }: { children: ReactNode; 
   }
   if (!user) return <Navigate to="/login" replace />
   if (requireComplete && !user.perfil_completo) return <Navigate to="/perfil" replace />
+  return <>{children}</>
+}
+
+function AdminOnly({ children }: { children: ReactNode }) {
+  const { user } = useAuth()
+  if (user?.role !== 'admin') return <Navigate to="/" replace />
   return <>{children}</>
 }
 
@@ -93,6 +101,24 @@ export default function App() {
                 element={
                   <Protected>
                     <Plano />
+                  </Protected>
+                }
+              />
+              <Route
+                path="/plano/status"
+                element={
+                  <Protected>
+                    <PlanoStatus />
+                  </Protected>
+                }
+              />
+              <Route
+                path="/admin"
+                element={
+                  <Protected>
+                    <AdminOnly>
+                      <Admin />
+                    </AdminOnly>
                   </Protected>
                 }
               />

@@ -73,6 +73,17 @@ export default function Navbar() {
                   </span>
                 )}
               </Link>
+              {user.role === 'admin' && (
+                <Link
+                  to="/admin"
+                  className="text-slate-600 hover:text-cyan-600 dark:text-slate-300 dark:hover:text-cyan-400 transition-colors flex items-center gap-1.5"
+                >
+                  <span>Admin</span>
+                  <span className="text-[10px] bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300 font-bold px-1.5 py-0.2 rounded">
+                    ADMIN
+                  </span>
+                </Link>
+              )}
             </nav>
           )}
         </div>

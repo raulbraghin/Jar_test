@@ -122,6 +122,48 @@ ADMIN_PASSWORD=sua-senha-admin
 
 ---
 
+## 👑 Criar novos administradores
+
+O registro público (`POST /api/v1/auth/register`) cria sempre `role="engenheiro"`.
+Só um admin existente pode criar ou promover outro admin. Perfis: `admin` | `engenheiro`.
+
+### Opção 1 — Pelo frontend (recomendado)
+
+1. Faça login em `http://localhost:8002` (ou `http://SEU_IP_OU_DOMINIO:8002` na VPS) com o admin inicial (`ADMIN_EMAIL` / `ADMIN_PASSWORD` do `.env`).
+2. Menu **Admin** → bloco **Criar novo usuário**: Nome + E-mail + Senha (mín. 6) + Perfil **Admin** → Criar.
+3. Ou promova um usuário existente trocando o `role` na lista.
+
+### Opção 2 — Pela API
+
+```bash
+# 1. Login como admin (backend na porta 8001)
+curl -X POST http://localhost:8001/api/v1/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"email":"<ADMIN_EMAIL do .env>","senha":"<ADMIN_PASSWORD do .env>"}'
+# -> {"access_token":"...","refresh_token":"...","user":{...}}
+
+# 2. Criar novo admin
+curl -X POST http://localhost:8001/api/v1/users \
+  -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
+  -d '{"nome":"Novo Admin","email":"novo.admin@exemplo.com","senha":"SenhaForte123","role":"admin"}'
+# 201 -> usuário criado (já com e-mail verificado)
+
+# Promover um usuário existente (liste antes com GET /api/v1/users)
+curl -X PATCH http://localhost:8001/api/v1/users/<uuid> \
+  -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
+  -d '{"role":"admin"}'
+```
+
+Swagger: `http://localhost:8001/docs`. Na VPS, troque `localhost:8001` pelo host/porta do backend.
+
+### Opção 3 — Pelo seed (admin inicial)
+
+No startup o backend cria o admin do `.env` se o e-mail ainda não existir (`backend/app/main.py`, `lifespan`).
+Para um admin extra via seed, altere `ADMIN_EMAIL` / `ADMIN_PASSWORD` no `.env` e suba com
+`docker compose up -d --build backend` — o novo e-mail passa a ser admin (o anterior continua existindo).
+
+---
+
 ## 🗃️ Migrações do Banco (Alembic)
 
 O backend usa Alembic. No startup (`app/main.py`), roda automaticamente `alembic upgrade head`.

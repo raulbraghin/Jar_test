@@ -56,10 +56,12 @@ class User(Base):
     )
 
     projetos = relationship("Projeto", back_populates="user", cascade="all, delete-orphan")
+    pagamentos = relationship("Pagamento", back_populates="user", cascade="all, delete-orphan")
 
     @property
     def pago(self) -> bool:
-        if self.plano_sempre:
+        # Admin é isento de plano (independe de plano_sempre).
+        if self.role == "admin" or self.plano_sempre:
             return True
         if not self.plano_ate:
             return False
