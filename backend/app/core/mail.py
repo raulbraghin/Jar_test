@@ -38,12 +38,12 @@ def enviar_email(para: str, assunto: str, html: str) -> None:
 
 
 def enviar_verificacao_email(para: str, link: str) -> None:
-    assunto = "Confirme seu e-mail — Jar Test (Cálculo de Dosagem)"
+    assunto = "Confirme seu e-mail — Jar-Test Digital"
     html = f"""
     <div style="font-family:Arial,sans-serif;max-width:500px;margin:0 auto;background:#f8fafc;padding:24px;border-radius:8px;border:1px solid #e2e8f0;">
-      <h2 style="color:#0891b2;margin-top:0;">Jar Test — Confirmação de E-mail</h2>
+      <h2 style="color:#0891b2;margin-top:0;">Jar-Test Digital — Confirmação de E-mail</h2>
       <p style="color:#334155;font-size:15px;line-height:1.5;">
-        Para concluir seu cadastro no <b>Jar Test (Cálculo de Dosagem e Ensaios de Tratabilidade)</b>,
+        Para concluir seu cadastro no <b>Jar-Test Digital (Cálculo de Dosagem e Ensaios de Tratabilidade)</b>,
         confirme seu endereço de e-mail clicando no botão abaixo:
       </p>
       <p style="text-align:center;margin:28px 0;">
@@ -59,7 +59,7 @@ def enviar_verificacao_email(para: str, link: str) -> None:
       </p>
       <hr style="border:none;border-top:1px solid #e2e8f0;margin:20px 0;">
       <p style="color:#94a3b8;font-size:11px;text-align:center;">
-        Automação RJOS &bull; Jar Test v2.0
+        Jar-Test Digital &bull; Plataforma de Ensaios de Tratabilidade
       </p>
     </div>
     """

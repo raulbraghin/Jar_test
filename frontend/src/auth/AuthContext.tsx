@@ -48,6 +48,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return () => window.removeEventListener('jartest:logout', onLogout)
   }, [])
 
+  useEffect(() => {
+    if (
+      user &&
+      !user.perfil_completo &&
+      !window.location.pathname.startsWith('/perfil') &&
+      !window.location.pathname.startsWith('/login') &&
+      !window.location.pathname.startsWith('/contrato') &&
+      !window.location.pathname.startsWith('/verificar-email')
+    ) {
+      window.history.replaceState({}, '', '/perfil')
+      window.dispatchEvent(new PopStateEvent('popstate'))
+    }
+  }, [user])
+
   const login = (data: TokenResponse) => {
     saveTokens({ access_token: data.access_token, refresh_token: data.refresh_token })
     setUser(data.user)

@@ -41,6 +41,12 @@ class ResultadoJarro(Base):
     dose_alc_ml: Mapped[Optional[float]] = mapped_column(Float, nullable=True)
     dose_flu_ml: Mapped[Optional[float]] = mapped_column(Float, nullable=True)
 
+    # Doses aplicadas no jarro em ppm (mg/L de ativo)
+    dose_pac_ppm: Mapped[Optional[float]] = mapped_column(Float, nullable=True)
+    dose_hipo_ppm: Mapped[Optional[float]] = mapped_column(Float, nullable=True)
+    dose_alc_ppm: Mapped[Optional[float]] = mapped_column(Float, nullable=True)
+    dose_flu_ppm: Mapped[Optional[float]] = mapped_column(Float, nullable=True)
+
     # Resultados físico-químicos pós-ensaio
     cor_aparente: Mapped[float] = mapped_column(Float, nullable=False, default=0.0)      # uH
     turbidez: Mapped[float] = mapped_column(Float, nullable=False, default=0.0)          # uT / NTU

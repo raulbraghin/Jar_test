@@ -1,0 +1,468 @@
+CONTRATO DE LICENÇA DE USO DE SOFTWARE SAAS E TERMOS DE SERVIÇO
+
+Pelo presente instrumento particular, de um lado:
+
+LICENCIANTE:
+RBR AUTOMAÇÃO, inscrita no CNPJ/MF sob o nº 43.449.471/0001-94, com sede no município de Franco da Rocha – SP, doravante denominada simplesmente "LICENCIANTE";
+
+LICENCIÁRIO:
+Pessoa física ou jurídica qualificada no momento do cadastro e aceite eletrônico deste contrato, doravante denominada simplesmente "LICENCIÁRIO";
+
+Quando referidas em conjunto, denominadas simplesmente "Partes".
+
+As Partes têm entre si justo e contratado o seguinte:
+
+CLÁUSULA 1ª – DO OBJETO E DA VIGÊNCIA
+
+1.1. O presente instrumento tem como objeto a concessão de licença de uso temporária, não exclusiva e intransferível do software denominado "jar-test digital", disponibilizado no modelo SaaS (Software as a Service), de propriedade intelectual exclusiva da LICENCIANTE.
+
+1.2. As funcionalidades, escopo técnico e limitações do software estão descritas no Anexo I – Descrição Técnica e Funcionalidades, que integra este contrato para todos os fins.
+
+1.3. A presente licença terá vigência conforme o plano contratado pelo LICENCIÁRIO no ato da adesão (mensal ou anual), iniciando-se na data de confirmação do pagamento e encerrando-se ao final do período contratado.
+
+1.4. A renovação será automática por períodos iguais e sucessivos, salvo manifestação expressa em contrário do LICENCIÁRIO com antecedência mínima de 30 (trinta) dias do término da vigência.
+
+1.5. A LICENCIANTE poderá alterar funcionalidades do software a qualquer tempo, mediante comunicação prévia de 15 (quinze) dias, quando se tratar de alterações relevantes que impactem a operação do LICENCIÁRIO, garantindo-se a manutenção das funcionalidades essenciais descritas no Anexo I.
+
+1.6. Compromisso de Nível de Serviço (SLA):
+a) Disponibilidade mínima: 99% (noventa e nove por cento) ao mês, calculada sobre 24 (vinte e quatro) horas diárias;
+b) Janela de manutenção programada: preferencialmente entre 00h e 06h, com aviso prévio mínimo de 48 (quarenta e oito) horas;
+c) Suporte técnico: atendimento de segunda a sexta, das 08h às 18h, por e-mail;
+d) Prazos de resposta: crítico – até 4h; alto – até 8h; médio – até 24h; baixo – até 72h;
+e) Descumprimento do SLA por período superior a 3 (três) meses consecutivos dará direito ao LICENCIÁRIO a desconto proporcional na mensalidade ou rescisão sem ônus.
+
+CLÁUSULA 2ª – DO ACESSO, SEGURANÇA E CONTA DE USUÁRIO
+
+2.1. O acesso ao software será realizado mediante login e senha individual criados pelo LICENCIÁRIO, sendo recomendada a ativação da autenticação multifator (MFA).
+
+2.2. A senha de acesso é pessoal e intransferível. O LICENCIÁRIO compromete-se expressamente a não compartilhar suas credenciais de acesso (login e senha) com terceiros.
+
+2.3. O descumprimento da obrigação de sigilo de senha ensejará o bloqueio imediato do acesso e a rescisão motivada do presente contrato, sem prejuízo da apuração de eventuais perdas e danos, após notificação prévia com prazo de 5 (cinco) dias para regularização, salvo reincidência ou má-fé.
+
+2.4. O LICENCIÁRIO é integralmente responsável por todas as operações e dados inseridos na plataforma a partir de sua conta de usuário.
+
+2.5. A LICENCIANTE manterá as credenciais armazenadas com criptografia e práticas de mercado, não sendo responsável por acessos não autorizados decorrentes de falha exclusiva do LICENCIÁRIO (senhas fracas, dispositivos compartilhados, ausência de MFA).
+
+2.6. O procedimento de recuperação de senha seguirá fluxo seguro, com confirmação por e-mail e/ou telefone previamente cadastrado.
+
+2.7. Limites de usuários e criação de contas adicionais observarão o plano contratado, sendo vedada a criação de usuários genéricos ou compartilhados.
+
+CLÁUSULA 3ª – DA PROPRIEDADE INTELECTUAL E RESTRIÇÕES
+
+3.1. O software "jar-test digital", seus códigos-fonte, arquitetura, design, algoritmos, rotinas de cálculo, marcas, layout, documentação e demais elementos de criação são de propriedade exclusiva e inalienável da LICENCIANTE, protegidos pela legislação brasileira de direitos autorais (Lei nº 9.610/98) e propriedade industrial (Lei nº 9.279/96).
+
+3.2. É expressamente vedado ao LICENCIÁRIO, sob pena de rescisão imediata e indenização por perdas e danos:
+a) Copiar, alterar, adaptar, traduzir ou criar obras derivadas do software;
+b) Sublicenciar, alugar, vender, doar ou transferir o acesso a terceiros;
+c) Realizar engenharia reversa, descompilação, desmontagem ou tentativa de extração do código-fonte ou dos algoritmos do sistema;
+d) Remover ou alterar avisos de direitos autorais, marcas ou identificações da LICENCIANTE;
+e) Utilizar o software para fins ilícitos, contrários à ordem pública ou que violem direitos de terceiros.
+
+3.3. Sugestões, comentários ou feedbacks enviados pelo LICENCIÁRIO poderão ser livremente utilizados pela LICENCIANTE para fins de melhoria do software, sem que isto caracterize violação de qualquer direito.
+
+3.4. A LICENCIANTE poderá utilizar dados agregados, anonimizados e estatísticos derivados do uso da plataforma para fins analíticos, de benchmarking e melhoria do produto, garantindo-se a impossibilidade de identificação do LICENCIÁRIO.
+
+3.5. Os relatórios, planilhas e outputs gerados pelo software a partir dos dados do LICENCIÁRIO pertencerão ao LICENCIÁRIO, sendo a LICENCIANTE mera prestadora de ferramenta de geração.
+
+CLÁUSULA 4ª – DO PAGAMENTO, REAJUSTE E SUSPENSÃO POR INADIMPLÊNCIA
+
+4.1. Como contraprestação pelo uso da plataforma, o LICENCIÁRIO pagará à LICENCIANTE os valores correspondentes ao plano contratado no ato da adesão, conforme tabela vigente disponível no site.
+
+4.2. Formas de pagamento: boleto bancário, PIX, cartão de crédito ou débito automático, conforme opções disponibilizadas no ato da contratação.
+
+4.3. Reajuste: Os valores serão reajustados anualmente, no aniversário do contrato, pela variação positiva do IPCA (IBGE) acumulada nos últimos 12 (doze) meses, ou por índice substituto, mediante aviso prévio mínimo de 30 (trinta) dias.
+
+4.4. Da Inadimplência:
+a) O não pagamento de qualquer valor na data de vencimento acarretará a aplicação de multa de 2% (dois por cento) e juros de mora de 1% (um por cento) ao mês, calculados pro rata die;
+b) Após 5 (cinco) dias de inadimplência, será enviada notificação ao LICENCIÁRIO;
+c) Após 10 (dez) dias de inadimplência, o acesso será suspenso, ficando disponível apenas para visualização de pendências e regularização;
+d) Após 30 (trinta) dias de inadimplência, o contrato poderá ser rescindido, com inscrição do débito em cadastro de inadimplentes e cobrança judicial ou extrajudicial.
+
+4.5. A suspensão por inadimplência visa resguardar o equilíbrio financeiro do serviço e não exime o LICENCIÁRIO da obrigação de quitar os valores devidos, acrescidos dos encargos moratórios.
+
+CLÁUSULA 5ª – DA LIMITAÇÃO DE RESPONSABILIDADE TECNOLÓGICA E OPERACIONAL
+
+5.1. O software "jar-test digital" é fornecido como ferramenta de auxílio tecnológico e computacional para simulação e acompanhamento de ensaios. A responsabilidade técnica pela aplicação prática, dosagem de produtos químicos, operação de processos de tratamento e tomada de decisões industriais ou sanitárias cabe exclusivamente ao LICENCIÁRIO e seus profissionais responsáveis (químicos, engenheiros, técnicos habilitados).
+
+5.2. A LICENCIANTE não responde por lucros cessantes, perdas operacionais, interrupções na produção, danos indiretos, punitivos ou consequenciais decorrentes de:
+a) Inserção incorreta de parâmetros pelo LICENCIÁRIO;
+b) Uso inadequado das simulações;
+c) Interpretação equivocada dos resultados;
+d) Decisões tomadas com base exclusiva nos outputs do software.
+
+5.3. A LICENCIANTE adotará as práticas adequadas de mercado para manter o serviço disponível, ressalvadas indisponibilidades decorrentes de:
+a) Manutenções técnicas programadas e previamente comunicadas;
+b) Falhas na infraestrutura de internet/servidores de terceiros fora de seu controle razoável;
+c) Casos fortuitos e de força maior (quedas de energia, desastres naturais, ataques cibernéticos massivos);
+d) Ações de terceiros, incluindo ataques DDoS, quando supervenientes às medidas razoáveis de proteção.
+
+5.4. Backup e Portabilidade:
+a) A LICENCIANTE realizará backup diário dos dados hospedados, mantendo-os por período mínimo de 90 (noventa) dias;
+b) Recomenda-se que o LICENCIÁRIO mantenha cópia própria dos dados críticos;
+c) Em caso de cancelamento, os dados serão disponibilizados em formato estruturado (CSV/JSON) por até 60 (sessenta) dias após o término do contrato, após o que serão eliminados.
+
+5.5. Limite Máximo de Indenização: Em qualquer hipótese, a responsabilidade total da LICENCIANTE perante o LICENCIÁRIO fica limitada ao valor efetivamente pago por este nos 12 (doze) meses imediatamente anteriores ao evento danoso.
+
+CLÁUSULA 6ª – DA PROTEÇÃO DE DADOS (LGPD) E CONFIDENCIALIDADE
+
+6.1. As Partes declaram ciência e compromiso de cumprimento à Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709/2018) e à legislação correlata.
+
+6.2. Papéis na LGPD:
+a) O LICENCIÁRIO figura como Controlador dos dados pessoais que inserir na plataforma, sendo responsável pela coleta junto aos titulares, definição de finalidades e bases legais;
+b) A LICENCIANTE figura como Operadora, tratando os dados pessoais exclusivamente para fins de execução deste contrato e conforme instruções do Controlador.
+
+6.3. Bases legais para tratamento pela LICENCIANTE: execução do contrato (art. 7º, V) e legítimo interesse para finalidades administrativas, financeiras e de segurança (art. 7º, IX), sempre observados os princípios do art. 6º da LGPD.
+
+6.4. Os dados e parâmetros operacionais inseridos no sistema são de propriedade do LICENCIÁRIO, comprometendo-se a LICENCIANTE a guardar sigilo e confidencialidade sobre tais informações, nos termos da legislação civil e penal.
+
+6.5. Direitos do Titular: a LICENCIANTE colaborará com o LICENCIÁRIO no atendimento aos direitos dos titulares previstos no art. 18 da LGPD (acesso, correção, anonimização, portabilidade, eliminação, informação), mediante solicitação pelos canais oficiais de suporte, com prazo de resposta de até 15 (quinze) dias.
+
+6.6. Retenção e Eliminação de Dados:
+a) Durante a vigência do contrato: os dados serão mantidos enquanto a conta estiver ativa;
+b) Após o término: os dados serão mantidos por até 60 (sessenta) dias para fins de portabilidade e, depois, eliminados de forma segura, ressalvadas hipóteses de retenção legal (fiscal, contábil, defesa em processos judiciais).
+
+6.7. Incidentes de Segurança: A LICENCIANTE comunicará ao LICENCIÁRIO a ocorrência de incidentes de segurança que possam acarretar risco ou dano relevante aos titulares, no prazo máximo de 48 (quarenta e oito) horas do conhecimento do fato, indicando medidas adotadas para mitigação.
+
+6.8. Suboperadores: A LICENCIANTE poderá contratar suboperadores (provedores de hosting, e-mail, monitoramento), garantindo que estes ofereçam garantias adequadas de proteção de dados, mediante contratos formalizados.
+
+6.9. Transferência Internacional: Caso os dados sejam transferidos para fora do Brasil, a LICENCIANTE adotará as medidas previstas no art. 33 e seguintes da LGPD, incluindo cláusulas-padrão contratuais ou países com nível adequado de proteção.
+
+6.10. O LICENCIÁRIO é responsável por obter consentimento ou observar demais bases legais para inserção de dados pessoais de terceiros (clientes, funcionários, operadores) na plataforma.
+
+CLÁUSULA 7ª – DA RESCISÃO E CANCELAMENTO
+
+7.1. O LICENCIÁRIO poderá solicitar o cancelamento de sua assinatura a qualquer momento, pelos canais de suporte oficiais (e-mail, chat ou painel administrativo), com efeito ao final do ciclo vigente.
+
+7.2. A rescisão do contrato não extingue os débitos vencidos e não pagos anteriores ao pedido de cancelamento, que permanecem devidos com os encargos moratórios.
+
+7.3. Prazo para efetivação do cancelamento: até 5 (cinco) dias úteis após a solicitação, com confirmação por e-mail.
+
+7.4. Hipóteses de Rescisão pela LICENCIANTE, mediante notificação prévia de 15 (quinze) dias, salvo em casos de maior gravidade:
+a) Descumprimento de cláusulas contratuais não sanado no prazo assinalado;
+b) Uso do software para fins ilícitos ou contrários à ordem pública;
+c) Tentativa de fraudar o sistema de cobrança ou uso por terceiros não autorizados;
+d) Inadimplência superior a 30 (trinta) dias, conforme Cláusula 4.4.
+
+7.5. Em qualquer hipótese de rescisão, a LICENCIANTE disponibilizará acesso para exportação dos dados pelo prazo de 60 (sessenta) dias, findo o qual os dados serão eliminados, ressalvada a retenção legal.
+
+CLÁUSULA 8ª – DO SUPORTE TÉCNICO, ATUALIZAÇÕES E COMUNICAÇÕES
+
+8.1. O suporte técnico será prestado pelos canais oficiais divulgados pela LICENCIANTE, observando-se os níveis de SLA previstos na Cláusula 1.6.
+
+8.2. Atualizações e manutenções: A LICENCIANTE poderá realizar atualizações, correções e melhorias no software a qualquer tempo, observado o aviso prévio nas hipóteses relevantes.
+
+8.3. Comunicações entre as Partes serão realizadas preferencialmente por meio eletrônico (e-mail, notificações no painel da plataforma, mensagens in-app), considerando-se recebidas no dia do envio, salvo comprovação de falha técnica do remetente.
+
+CLÁUSULA 9ª – DA CONFIDENCIALIDADE E CASOS FORTUITOS
+
+9.1. As Partes obrigam-se a manter sigilo sobre informações confidenciais a que tiverem acesso em razão deste contrato, durante a vigência e por 5 (cinco) anos após o término, sob pena de responder por perdas e danos.
+
+9.2. Casos Fortuitos e Força Maior: Nenhuma Parte será responsável por inadimplemento decorrente de eventos imprevisíveis e inevitáveis, naturais ou humanos (enchentes, pandemias, greves gerais, guerras, ataques cibernéticos massivos, falhas generalizadas de infraestrutura). A Parte afetada comunicará a outra em até 5 (cinco) dias úteis, buscando-se solução mutuamente aceitável.
+
+CLÁUSULA 10ª – DAS DISPOSIÇÕES GERAIS
+
+10.1. O LICENCIÁRIO declara ter lido, compreendido e concordado com todos os termos deste contrato, bem como com a Política de Privacidade e os Termos de Uso da plataforma, que integram este instrumento como anexos.
+
+10.2. O aceite eletrônico deste contrato, nos termos da MP 2.200-2/2001 e legislação aplicável, tem plena validade jurídica e vincula as Partes.
+
+10.3. Este contrato constitui o acordo integral entre as Partes, prevalecendo sobre eventuais entendimentos orais ou escritos anteriores.
+
+10.4. A nulidade de qualquer cláusula não afetará a validade das demais.
+
+10.5. Vedação de uso ilícito: O LICENCIÁRIO compromete-se a utilizar o software em conformidade com a legislação brasileira, sendo vedado seu uso para fins de lavagem de dinheiro, financiamento ao terrorismo, fraudes, ataques cibernéticos ou qualquer atividade criminosa.
+
+10.6. Alterações contratuais: Qualquer alteração deverá ser feita por meio de aditivos assinados eletronicamente ou por meio de nova versão disponibilizada na plataforma, com aviso prévio mínimo de 15 (quinze) dias, salvo alterações em favor do LICENCIÁRIO.
+
+CLÁUSULA 11ª – DA RESOLUÇÃO DE CONFLITOS E FORO
+
+11.1. As Partes envidarão esforços para resolver eventuais conflitos de forma amigável e extrajudicial, mediante notificação escrita com prazo de 30 (trinta) dias para composição.
+
+11.2. Não havendo composição amigável, as Partes elegem o Foro da Comarca de Franco da Rocha – SP para dirimir quaisquer dúvidas ou litígios decorrentes deste contrato, com renúncia a qualquer outro, por mais privilegiado que seja, sem prejuízo da possibilidade de utilização do Sistema de Mediação e Arbitragem da Câmara de Conciliação, Mediação e Arbitragem de São Paulo, mediante prévio acordo entre as Partes.
+
+E, por estarem assim justas e contratadas, as Partes formalizam o presente contrato por meio de aceite eletrônico na plataforma, na data do registro de aceitação.
+
+Franco da Rocha – SP, [DATA DE ACEITE ELETRÔNICO]
+
+RBR AUTOMAÇÃO – LICENCIANTE
+
+LICENCIÁRIO – [QUALIFICAÇÃO NO CADASTRO]
+
+ANEXO I – DESCRIÇÃO TÉCNICA E FUNCIONALIDADES
+[Conteúdo a ser preenchido com especificação detalhada do software, limitações técnicas, integrações suportadas e requisitos mínimos de uso.]
+
+ANEXO II – POLÍTICA DE PRIVACIDADE
+
+Última atualização: [DATA]
+
+A RBR AUTOMAÇÃO, inscrita no CNPJ nº 43.449.471/0001-94 ("RBR" ou "nós"), está comprometida com a proteção da privacidade e dos dados pessoais de seus usuários, em conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018 – LGPD) e demais legislações aplicáveis. Esta Política de Privacidade descreve como coletamos, usamos, armazenamos, compartilhamos e protegemos os dados pessoais dos usuários ("LICENCIÁRIO" ou "você") ao utilizar a plataforma "jar-test digital".
+
+1. DEFINIÇÕES
+1.1. Dados Pessoais: informações que identificam ou possam identificar pessoa natural.
+1.2. Dados Sensíveis: dados que revelem origem racial/étnica, convicção religiosa, opinião política, dados de saúde, dados biométricos, genéticos ou relativos à vida sexual.
+1.3. Titular: pessoa natural a quem se referem os dados pessoais.
+1.4. Controlador: quem toma decisões sobre o tratamento dos dados (no caso, o LICENCIÁRIO, quando insere dados de terceiros na plataforma).
+1.5. Operador: quem trata os dados em nome do controlador (no caso, a RBR).
+1.6. Encarregado (DPO): pessoa indicada para ser o canal de comunicação entre o controlador, os titulares e a ANPD.
+
+2. DADOS COLETADOS
+2.1. Dados de Cadastro e Conta:
+   - Nome completo, e-mail, telefone, CPF ou CNPJ;
+   - Razão social (se pessoa jurídica);
+   - Endereço, cidade, estado e CEP;
+   - Dados profissionais (cargo, empresa, área de atuação).
+2.2. Dados de Acesso e Uso:
+   - Endereço IP, data e hora de acesso, dispositivo utilizado, navegador;
+   - Logs de acesso e operações realizadas na plataforma;
+   - Cookies e identificadores de sessão.
+2.3. Dados Operacionais (inseridos pelo LICENCIÁRIO):
+   - Parâmetros de ensaios, dosagens, resultados de testes;
+   - Dados de processos industriais e/ou sanitários;
+   - Possíveis dados de terceiros inseridos pelo LICENCIÁRIO (clientes, colaboradores, fornecedores).
+2.4. Dados de Pagamento:
+   - Forma de pagamento escolhida;
+   - Dados bancários ou de cartão (processados por gateways especializados, não armazenados pela RBR).
+2.5. Dados de Suporte:
+   - Comunicações realizadas com a equipe de suporte;
+   - Registros de chamados, reclamações e solicitações.
+
+3. FINALIDADES DE USO
+Os dados pessoais coletados são utilizados para as seguintes finalidades:
+3.1. Execução do contrato de licença de uso do software (art. 7º, V, LGPD);
+3.2. Cadastro, autenticação e gestão da conta do LICENCIÁRIO;
+3.3. Processamento de pagamentos e gestão financeira;
+3.4. Prestação de suporte técnico e atendimento ao cliente;
+3.5. Envio de comunicações operacionais (avisos de manutenção, atualizações, alterações contratuais);
+3.6. Aprimoramento da plataforma, desenvolvimento de novas funcionalidades e correção de erros;
+3.7. Cumprimento de obrigações legais e regulatórias (fiscais, contábeis, defesa em processos);
+3.8. Exercício regular de direitos em processos judiciais ou administrativos;
+3.9. Segurança da plataforma, prevenção de fraudes e garantia da integridade do serviço;
+3.10. Envio de comunicações comerciais e marketing (mediante consentimento específico e opt-in).
+
+4. BASES LEGAIS
+A RBR trata dados pessoais com fundamento nas seguintes bases legais da LGPD:
+a) Execução do contrato (art. 7º, V);
+b) Cumprimento de obrigação legal/regulatória (art. 7º, II);
+c) Legítimo interesse para fins de segurança, melhoria do produto e defesa de direitos (art. 7º, IX);
+d) Consentimento para finalidades específicas, como marketing e cookies opcionais (art. 7º, I);
+e) Para dados sensíveis eventualmente tratados, quando aplicável, mediante consentimento específico (art. 11).
+
+5. COMPARTILHAMENTO DE DADOS
+5.1. A RBR não vende dados pessoais. O compartilhamento ocorre apenas nas seguintes hipóteses:
+a) Com suboperadores e prestadores de serviços essenciais:
+   - Provedores de hospedagem em nuvem;
+   - Processadores de pagamento;
+   - Ferramentas de suporte, e-mail transacional e monitoramento;
+   - Escritórios de advocacia e contabilidade.
+b) Com autoridades públicas, mediante ordem judicial ou obrigação legal;
+c) Em caso de operações societárias (fusão, aquisição, cisão), com devido aviso prévio;
+d) Com o LICENCIÁRIO Controlador, no caso de dados de terceiros por ele inseridos.
+5.2. Todos os suboperadores são obrigados contratualmente a manter padrões adequados de proteção de dados e a tratar os dados exclusivamente para as finalidades instruídas.
+
+6. COOKIES E TECNOLOGIAS DE RASTREAMENTO
+6.1. A plataforma utiliza cookies e tecnologias semelhantes para:
+a) Autenticação e segurança;
+b) Preferências do usuário;
+c) Análise de uso e desempenho (analytics);
+d) Marketing e remarketing (quando autorizado).
+6.2. O LICENCIÁRIO pode gerenciar as preferências de cookies pelo navegador ou pelo banner de consentimento disponibilizado na plataforma.
+
+7. TRANSFERÊNCIA INTERNACIONAL
+7.1. Alguns suboperadores podem estar localizados no exterior, hipótese em que a RBR adotará as medidas cabíveis da LGPD (art. 33 e seguintes), incluindo cláusulas-padrão contratuais ou outras bases válidas.
+7.2. Os dados podem ser armazenados em servidores no Brasil ou no exterior, conforme exigência operacional e contratual.
+
+8. SEGURANÇA DA INFORMAÇÃO
+8.1. A RBR adota medidas técnicas e administrativas robustas para proteger os dados pessoais, incluindo:
+a) Criptografia em trânsito (TLS/SSL) e em repouso;
+b) Controle de acesso baseado em perfil e privilégio mínimo;
+c) Monitoramento contínuo e logs de auditoria;
+d) Backups regulares e plano de recuperação de desastres;
+e) Testes periódicos de segurança e gestão de vulnerabilidades;
+f) Treinamento de colaboradores em proteção de dados;
+g) Política de controle de acesso físico e lógico aos data centers.
+8.2. Apesar dos esforços, nenhum sistema é 100% seguro. Em caso de incidente relevante, a RBR comunicará os afetados e a ANPD conforme previsto em lei.
+
+9. RETENÇÃO E ELIMINAÇÃO DE DADOS
+9.1. Os dados pessoais serão mantidos durante a vigência do contrato e por até 60 (sessenta) dias após o término, para fins de portabilidade.
+9.2. Após esse prazo, os dados serão eliminados, ressalvadas as hipóteses de retenção legal (cumprimento de obrigações fiscais, contábeis, defesa em processos), nos termos do art. 16 da LGPD.
+9.3. Prazos específicos de retenção:
+   - Dados de cadastro: durante a conta ativa + 60 dias;
+   - Dados de pagamento: 5 (cinco) anos (obrigação fiscal);
+   - Logs de acesso: 6 (seis) meses (Marco Civil da Internet);
+   - Comunicações de suporte: 3 (três) anos após o término;
+   - Dados operacionais do LICENCIÁRIO: até sua eliminação voluntária ou fim do contrato + 60 dias.
+
+10. DIREITOS DOS TITULARES
+10.1. O titular dos dados pessoais possui os seguintes direitos, conforme art. 18 da LGPD:
+a) Confirmação da existência de tratamento;
+b) Acesso aos dados;
+c) Correção de dados incompletos, inexatos ou desatualizados;
+d) Anonimização, bloqueio ou eliminação de dados desnecessários, excessivos ou tratados em desconformidade;
+e) Portabilidade dos dados a outro fornecedor;
+f) Eliminação dos dados tratados com consentimento;
+g) Informação sobre entidades públicas e privadas com as quais houve compartilhamento;
+h) Informação sobre a possibilidade de não fornecer consentimento e suas consequências;
+i) Revogação do consentimento, quando aplicável.
+10.2. As solicitações podem ser realizadas pelo e-mail do Encarregado (DPO): [E-MAIL DO DPO].
+10.3. O prazo de resposta é de até 15 (quinze) dias, prorrogável mediante justificativa.
+10.4. Caso o titular considere que seus direitos não foram atendidos, poderá recorrer à ANPD ou ao Poder Judiciário.
+
+11. ENCARREGADO (DPO)
+11.1. Nome: [NOME DO DPO]
+11.2. E-mail: [E-MAIL]
+11.3. Telefone: [TELEFONE]
+
+12. CRIANÇAS E ADOLESCENTES
+12.1. A plataforma não se destina a menores de 18 (dezoito) anos. Caso seja identificada a coleta inadvertida de dados de menores sem o consentimento dos responsáveis, os dados serão eliminados imediatamente.
+
+13. ALTERAÇÕES NA POLÍTICA
+13.1. Esta Política de Privacidade poderá ser atualizada periodicamente, mediante aviso prévio de 15 (quinze) dias para alterações relevantes.
+13.2. A versão atual estará sempre disponível em [URL].
+13.3. Alterações que dependam de consentimento serão solicitadas separadamente.
+
+14. LEGISLAÇÃO APLICÁVEL
+14.1. Esta Política é regida pela Lei Brasileira, especialmente pela LGPD e pelo Marco Civil da Internet (Lei nº 12.965/2014).
+
+15. CONTATO
+Em caso de dúvidas sobre esta Política ou sobre o tratamento dos seus dados:
+- E-mail: [E-MAIL DE PRIVACIDADE]
+- Encarregado (DPO): [NOME] – [E-MAIL]
+- Endereço: [ENDEREÇO DA RBR AUTOMAÇÃO]
+
+
+ANEXO III – TERMOS DE USO DA PLATAFORMA
+
+Última atualização: [DATA]
+
+Bem-vindo à plataforma "jar-test digital", operada pela RBR AUTOMAÇÃO ("RBR", "nós" ou "plataforma"). Ao utilizar a plataforma, você ("LICENCIÁRIO" ou "usuário") concorda com os presentes Termos de Uso. Leia atentamente antes de prosseguir.
+
+1. ACEITAÇÃO DOS TERMOS
+1.1. O acesso e uso da plataforma implicam aceitação integral destes Termos, do Contrato de Licença de Uso de Software SaaS e da Política de Privacidade.
+1.2. Caso não concorde com qualquer disposição, o usuário não deverá utilizar a plataforma.
+
+2. CADASTRO E CONTA
+2.1. Para utilizar a plataforma, o usuário deverá realizar cadastro com informações verdadeiras, completas e atualizadas.
+2.2. O usuário é responsável por manter a confidencialidade de suas credenciais (login e senha) e por todas as atividades realizadas em sua conta.
+2.3. O usuário deve notificar imediatamente a RBR em caso de suspeita de uso não autorizado de sua conta.
+2.4. É vedada a criação de contas por menores de 18 (dezoito) anos, salvo com consentimento expresso dos responsáveis legais.
+2.5. O usuário compromete-se a utilizar autenticação multifator (MFA) sempre que disponível.
+
+3. USO PERMITIDO
+3.1. A plataforma deve ser utilizada exclusivamente para fins lícitos e em conformidade com estes Termos e a legislação aplicável.
+3.2. É permitido ao usuário:
+a) Criar, armazenar e gerenciar ensaios, simulações e relatórios relacionados aos seus processos;
+b) Exportar e compartilhar dados de sua titularidade;
+c) Integrar-se a sistemas próprios mediante APIs autorizadas (quando aplicável).
+3.3. O usuário declara que possui todos os direitos necessários sobre os dados inseridos na plataforma, sendo responsável pelo seu conteúdo.
+
+4. USO PROIBIDO
+4.1. É expressamente vedado ao usuário:
+a) Utilizar a plataforma para fins ilícitos, fraudulentos ou contrários à ordem pública;
+b) Compartilhar credenciais ou permitir acesso de terceiros não autorizados;
+c) Realizar engenharia reversa, descompilação ou tentativa de extração do código-fonte;
+d) Introduzir vírus, malware ou qualquer código malicioso;
+e) Tentar acessar áreas restritas ou sistemas de outros usuários;
+f) Utilizar a plataforma para lavagem de dinheiro, financiamento ao terrorismo ou outras atividades criminosas;
+g) Sobrecarga intencional da infraestrutura ou ataques de negação de serviço;
+h) Coletar dados de outros usuários sem autorização;
+i) Reproduzir, distribuir ou modificar o conteúdo da plataforma sem autorização expressa.
+
+5. RESPONSABILIDADES TÉCNICAS
+5.1. A plataforma é uma ferramenta de apoio à decisão e simulação computacional. NÃO substitui a análise técnica de profissionais habilitados (químicos, engenheiros, técnicos).
+5.2. O usuário é exclusivamente responsável por:
+a) Inserção correta de parâmetros;
+b) Interpretação dos resultados;
+c) Tomada de decisões industriais, sanitárias e operacionais;
+d) Manter profissionais habilitados em seus processos;
+e) Verificar a adequação dos resultados às normas técnicas aplicáveis.
+5.3. A RBR não se responsabiliza por decisões tomadas com base exclusiva nos outputs da plataforma.
+
+6. CONTEÚDO DO USUÁRIO
+6.1. O usuário mantém todos os direitos sobre o conteúdo (ensaios, parâmetros, dados, relatórios) inserido na plataforma.
+6.2. O usuário concede à RBR licença limitada, não exclusiva e revogável para hospedar, processar e exibir tal conteúdo exclusivamente para fins de prestação do serviço contratado.
+6.3. A RBR não analisará o conteúdo do usuário salvo para:
+a) Cumprimento de obrigação legal ou ordem judicial;
+b) Investigação de violação destes Termos;
+c) Garantia de funcionamento técnico da plataforma;
+d) Suporte técnico solicitado pelo usuário.
+
+7. PROPRIEDADE INTELECTUAL
+7.1. Todo o conteúdo da plataforma (software, layout, textos, marcas, algoritmos, designs, gráficos, ícones, sons) é de propriedade exclusiva da RBR ou de seus licenciadores.
+7.2. Nenhum elemento da plataforma pode ser copiado, reproduzido, distribuído ou modificado sem autorização prévia e por escrito da RBR.
+
+8. ATUALIZAÇÕES E ALTERAÇÕES
+8.1. A RBR poderá atualizar a plataforma a qualquer tempo, com aviso prévio nas hipóteses que impactem significativamente o uso.
+8.2. Atualizações de segurança ou correção de bugs poderão ser realizadas sem aviso prévio.
+8.3. A RBR poderá alterar estes Termos mediante aviso prévio de 15 (quinze) dias. Alterações em favor do usuário entram em vigor imediatamente.
+
+9. DISPONIBILIDADE E MANUTENÇÃO
+9.1. A RBR envida esforços para manter a plataforma disponível 24/7, observada a meta de SLA de 99% prevista no Contrato.
+9.2. Manutenções programadas serão comunicadas com antecedência mínima de 48 (quarenta e oito) horas, preferencialmente realizadas entre 00h e 06h.
+9.3. Em caso de indisponibilidade emergencial, a RBR buscará restabelecer o serviço no menor prazo possível.
+
+10. SUPORTE TÉCNICO
+10.1. O suporte é prestado por:
+   - E-mail: comercial@rbrautomcao.com.br
+   - Chat: dentro da plataforma
+10.2. Horário de atendimento: segunda a sexta, 08h às 18h (horário de Brasília).
+10.3. Prazos de resposta conforme SLA previsto no Contrato.
+
+11. BACKUP E PORTABILIDADE
+11.1. O usuário é responsável por manter cópia própria de seus dados críticos.
+11.2. A RBR realiza backups diários, mantendo-os por até 90 (noventa) dias.
+11.3. Em caso de cancelamento, os dados ficam disponíveis para exportação por 60 (sessenta) dias.
+
+12. PAGAMENTO E INADIMPLÊNCIA
+12.1. As condições de pagamento, planos e reajustes estão previstas no Contrato de Licença de Uso.
+12.2. A inadimplência poderá acarretar suspensão do acesso, conforme Cláusula 4 do Contrato.
+
+13. SUSPENSÃO E ENCERRAMENTO
+13.1. A RBR poderá suspender ou encerrar o acesso do usuário em caso de:
+a) Violação destes Termos;
+b) Uso ilícito da plataforma;
+c) Inadimplência superior a 30 (trinta) dias;
+d) Ordem judicial ou requisição de autoridade competente.
+13.2. O usuário será notificado previamente, salvo em casos de maior gravidade.
+13.3. O usuário pode solicitar o cancelamento a qualquer momento, pelos canais oficiais.
+
+14. ISENÇÃO DE RESPONSABILIDADE
+14.1. A plataforma é fornecida "como está" (as is), sem garantias de adequação a finalidade específica além das expressamente previstas.
+14.2. A RBR não garante que a plataforma será ininterrupta, livre de erros ou totalmente segura.
+14.3. A RBR não se responsabiliza por:
+a) Decisões técnicas tomadas pelo usuário com base nos resultados;
+b) Prejuízos decorrentes de uso inadequado;
+c) Indisponibilidade por força maior ou fatos de terceiros;
+d) Danos indiretos, lucros cessantes ou perdas consequenciais.
+
+15. LIMITAÇÃO DE RESPONSABILIDADE
+15.1. A responsabilidade total da RBR perante o usuário fica limitada ao valor pago nos 12 (doze) meses imediatamente anteriores ao evento danoso, conforme previsto no Contrato.
+
+16. INDENIZAÇÃO
+16.1. O usuário concorda em indenizar a RBR por perdas e danos decorrentes de:
+a) Uso indevido da plataforma;
+b) Violação destes Termos ou de direitos de terceiros;
+c) Inserção de conteúdo ilegal ou ofensivo.
+
+17. LINKS DE TERCEIROS
+17.1. A plataforma pode conter links para sites de terceiros. A RBR não se responsabiliza pelo conteúdo, políticas ou práticas desses sites.
+
+18. COMUNICAÇÕES
+18.1. As comunicações entre RBR e usuário serão realizadas por:
+   - E-mail cadastrado;
+   - Notificações dentro da plataforma;
+   - SMS ou WhatsApp (quando autorizado).
+18.2. O usuário pode optar por receber ou não comunicações comerciais pelo painel de preferências.
+
+19. DISPOSIÇÕES GERAIS
+19.1. Estes Termos são regidos pela legislação brasileira.
+19.2. A nulidade de qualquer cláusula não afetará a validade das demais.
+19.3. O usuário declara ter lido, compreendido e aceito todos os termos aqui previstos.
+19.4. Estes Termos podem ser alterados mediante aviso prévio de 15 (quinze) dias.
+
+20. FORO
+20.1. Fica eleito o Foro da Comarca de Franco da Rocha – SP para dirimir eventuais conflitos, com renúncia a qualquer outro, por mais privilegiado que seja.
+
+CONTATO RBR AUTOMAÇÃO:
+- E-mail: comercial@rbrautomcao.com.br
+- Endereço: Leandro, 65, Ch São Luiz, Franco da Rocha
+- Encarregado (DPO): [NOME DO DPO]
+- Suporte: comercial@rbrautomacao.com.br

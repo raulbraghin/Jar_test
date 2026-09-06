@@ -1,14 +1,29 @@
 export interface User {
   id: string
   nome: string
+  sobrenome?: string | null
   email: string
+  telefone?: string | null
+  cpf_masked?: string | null
   role: string
   ativo: boolean
   email_verificado: boolean
+  perfil_completo: boolean
   criado_em: string
   plano_ate?: string | null
   plano_sempre: boolean
   pago: boolean
+
+  empresa?: string | null
+  formacao?: string | null
+  cargo?: string | null
+  logradouro?: string | null
+  numero?: string | null
+  complemento?: string | null
+  bairro?: string | null
+  cidade?: string | null
+  uf?: string | null
+  cep?: string | null
 }
 
 export interface TokenResponse {
@@ -62,13 +77,28 @@ export interface ConfiguracaoETA {
   tempo_dec_seg: number
 }
 
+export type UnidadeDosagem = 'ml_min' | 'ppm'
+
 export interface DosagensPlanta {
   id: string
   projeto_id: string
+  unidade: UnidadeDosagem
   dosagem_pac_ml_min: number
   dosagem_hipo_ml_min: number
   dosagem_alc_ml_min: number
   dosagem_flu_ml_min: number
+  dosagem_pac_ppm: number
+  dosagem_hipo_ppm: number
+  dosagem_alc_ppm: number
+  dosagem_flu_ppm: number
+  pac_conc_perc?: number | null
+  pac_densidade?: number | null
+  hipo_conc_perc?: number | null
+  hipo_densidade?: number | null
+  alc_conc_perc?: number | null
+  alc_densidade?: number | null
+  flu_conc_perc?: number | null
+  flu_densidade?: number | null
 
   pac_100_ml: number
   pac_10_ml: number
@@ -106,6 +136,10 @@ export interface ResultadoJarro {
   dose_hipo_ml?: number | null
   dose_alc_ml?: number | null
   dose_flu_ml?: number | null
+  dose_pac_ppm?: number | null
+  dose_hipo_ppm?: number | null
+  dose_alc_ppm?: number | null
+  dose_flu_ppm?: number | null
 
   cor_aparente: number
   turbidez: number
@@ -162,10 +196,15 @@ export interface RelatorioExecutivo {
     tempo_dec_seg: number
   } | null
   dosagens_planta?: {
+    unidade: UnidadeDosagem
     dosagem_pac_ml_min: number
     dosagem_hipo_ml_min: number
     dosagem_alc_ml_min: number
     dosagem_flu_ml_min: number
+    dosagem_pac_ppm: number
+    dosagem_hipo_ppm: number
+    dosagem_alc_ppm: number
+    dosagem_flu_ppm: number
     pac?: { c100: number; c10: number; c1: number }
     hipo?: { c100: number; c10: number; c1: number }
     alc?: { c100: number; c10: number; c1: number }
@@ -176,6 +215,7 @@ export interface RelatorioExecutivo {
   jarro_otimo?: {
     numero_jarro: number
     dose_pac_ml?: number
+    dose_pac_ppm?: number | null
     turbidez_final: number
     cor_final: number
     ph_final: number

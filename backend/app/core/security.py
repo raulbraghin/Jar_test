@@ -1,9 +1,12 @@
+import base64
+import hashlib
 import uuid
 from datetime import datetime, timedelta, timezone
 from typing import Any
 
 import bcrypt
 import jwt
+from cryptography.fernet import Fernet, InvalidToken
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session
@@ -20,6 +23,43 @@ def hash_password(password: str) -> str:
 
 def verify_password(password: str, senha_hash: str) -> bool:
     return bcrypt.checkpw(password.encode("utf-8"), senha_hash.encode("utf-8"))
+
+
+def _cpf_fernet() -> Fernet:
+    """Retorna instância Fernet. Se CPF_KEY vazia, deriva de SECRET_KEY."""
+    key = settings.CPF_KEY
+    if not key:
+        derived = hashlib.sha256(settings.SECRET_KEY.encode("utf-8")).digest()
+        key = base64.urlsafe_b64encode(derived).decode("utf-8")
+    return Fernet(key.encode("utf-8"))
+
+
+def cpf_digits(cpf: str) -> str:
+    """Mantém apenas dígitos do CPF."""
+    return "".join(ch for ch in cpf if ch.isdigit())
+
+
+def encrypt_cpf(cpf: str) -> str:
+    """Cifra CPF (apenas dígitos) com Fernet. Retorna token base64."""
+    return _cpf_fernet().encrypt(cpf_digits(cpf).encode("utf-8")).decode("utf-8")
+
+
+def decrypt_cpf(token: str) -> str:
+    """Decifra o token Fernet do CPF. Lança InvalidToken se inválido."""
+    return _cpf_fernet().decrypt(token.encode("utf-8")).decode("utf-8")
+
+
+def hash_cpf_for_uniqueness(cpf: str) -> str:
+    """Hash determinístico (sha256) do CPF normalizado — usado para unicidade."""
+    return hashlib.sha256(cpf_digits(cpf).encode("utf-8")).hexdigest()
+
+
+def format_cpf(cpf: str) -> str:
+    """Formata CPF como 000.000.000-00."""
+    d = cpf_digits(cpf)
+    if len(d) != 11:
+        return cpf
+    return f"{d[:3]}.{d[3:6]}.{d[6:9]}-{d[9:]}"
 
 
 def _create_token(subject: str, expires_delta: timedelta, token_type: str) -> str:

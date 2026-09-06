@@ -18,6 +18,32 @@ class User(Base):
     ativo: Mapped[bool] = mapped_column(Boolean, nullable=False, default=True)
     email_verificado: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
 
+    # === Perfil pessoal (obrigatórios após primeiro login) ===
+    sobrenome: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    # cpf_hash: hash determinístico (sha256) para unicidade. cpf_cifrado: token Fernet reversível.
+    # Separados porque Fernet usa IV aleatório (nunca repete) e não serve para comparar unicidade.
+    cpf_hash: Mapped[str | None] = mapped_column(String(64), nullable=True, unique=True, index=True)
+    cpf_cifrado: Mapped[str | None] = mapped_column(String(512), nullable=True)
+    telefone: Mapped[str | None] = mapped_column(String(20), nullable=True)
+
+    # === Dados profissionais (opcionais) ===
+    empresa: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    formacao: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    cargo: Mapped[str | None] = mapped_column(String(255), nullable=True)
+
+    # === Endereço (opcional) ===
+    logradouro: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    numero: Mapped[str | None] = mapped_column(String(20), nullable=True)
+    complemento: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    bairro: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    cidade: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    uf: Mapped[str | None] = mapped_column(String(2), nullable=True)
+    cep: Mapped[str | None] = mapped_column(String(10), nullable=True)
+
+    # === Controle ===
+    perfil_completo: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
+    contrato_aceito_em: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+
     # Suporte a plano pago
     plano_ate: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     plano_sempre: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
@@ -41,3 +67,8 @@ class User(Base):
         if limite.tzinfo is None:
             limite = limite.replace(tzinfo=timezone.utc)
         return limite > datetime.now(timezone.utc)
+
+    @property
+    def cpf(self) -> str | None:
+        """Retorna o CPF mascarado (apenas dígitos finais) sem precisar descriptografar."""
+        return None

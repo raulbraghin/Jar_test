@@ -15,6 +15,8 @@ from app.services.calculos import (
     calcular_diluicoes_jarro_2l,
     calcular_hidraulica_modular,
     calcular_hidraulica_torrezan,
+    ml_min_para_ppm,
+    ppm_para_ml_min,
 )
 
 router = APIRouter(prefix="/projetos/{projeto_id}", tags=["calculos"])
@@ -130,20 +132,61 @@ def salvar_dosagens_planta(
         )
 
     vazao = config.vazao_modulo_ls
-    pac = calcular_diluicoes_jarro_2l(payload.dosagem_pac_ml_min, vazao)
-    hipo = calcular_diluicoes_jarro_2l(payload.dosagem_hipo_ml_min, vazao)
-    alc = calcular_diluicoes_jarro_2l(payload.dosagem_alc_ml_min, vazao)
-    flu = calcular_diluicoes_jarro_2l(payload.dosagem_flu_ml_min, vazao)
+    unidade = payload.unidade or "ml_min"
+    if unidade not in ("ml_min", "ppm"):
+        raise HTTPException(status_code=422, detail="Unidade deve ser 'ml_min' ou 'ppm'.")
+
+    params = {
+        "pac": (payload.pac_conc_perc, payload.pac_densidade, payload.dosagem_pac_ml_min, payload.dosagem_pac_ppm),
+        "hipo": (payload.hipo_conc_perc, payload.hipo_densidade, payload.dosagem_hipo_ml_min, payload.dosagem_hipo_ppm),
+        "alc": (payload.alc_conc_perc, payload.alc_densidade, payload.dosagem_alc_ml_min, payload.dosagem_alc_ppm),
+        "flu": (payload.flu_conc_perc, payload.flu_densidade, payload.dosagem_flu_ml_min, payload.dosagem_flu_ppm),
+    }
+
+    ml_min: dict[str, float] = {}
+    ppm: dict[str, float] = {}
+    for nome, (conc, dens, v_ml, v_ppm) in params.items():
+        if unidade == "ppm":
+            if (v_ppm or 0) > 0 and (not conc or not dens):
+                raise HTTPException(
+                    status_code=422,
+                    detail=f"Informe concentração (% m/m) e densidade (g/mL) de {nome} para calcular em ppm.",
+                )
+            ppm[nome] = v_ppm or 0.0
+            ml_min[nome] = ppm_para_ml_min(ppm[nome], vazao, conc or 0, dens or 0)
+        else:
+            ml_min[nome] = v_ml or 0.0
+            ppm[nome] = ml_min_para_ppm(ml_min[nome], vazao, conc or 0, dens or 0) if conc and dens else 0.0
+
+    pac = calcular_diluicoes_jarro_2l(ml_min["pac"], vazao)
+    hipo = calcular_diluicoes_jarro_2l(ml_min["hipo"], vazao)
+    alc = calcular_diluicoes_jarro_2l(ml_min["alc"], vazao)
+    flu = calcular_diluicoes_jarro_2l(ml_min["flu"], vazao)
 
     dos = db.scalar(select(DosagensPlanta).where(DosagensPlanta.projeto_id == projeto_id))
     if not dos:
         dos = DosagensPlanta(projeto_id=projeto_id)
         db.add(dos)
 
-    dos.dosagem_pac_ml_min = payload.dosagem_pac_ml_min
-    dos.dosagem_hipo_ml_min = payload.dosagem_hipo_ml_min
-    dos.dosagem_alc_ml_min = payload.dosagem_alc_ml_min
-    dos.dosagem_flu_ml_min = payload.dosagem_flu_ml_min
+    dos.unidade = unidade
+    dos.dosagem_pac_ml_min = ml_min["pac"]
+    dos.dosagem_hipo_ml_min = ml_min["hipo"]
+    dos.dosagem_alc_ml_min = ml_min["alc"]
+    dos.dosagem_flu_ml_min = ml_min["flu"]
+
+    dos.dosagem_pac_ppm = ppm["pac"]
+    dos.dosagem_hipo_ppm = ppm["hipo"]
+    dos.dosagem_alc_ppm = ppm["alc"]
+    dos.dosagem_flu_ppm = ppm["flu"]
+
+    dos.pac_conc_perc = payload.pac_conc_perc
+    dos.pac_densidade = payload.pac_densidade
+    dos.hipo_conc_perc = payload.hipo_conc_perc
+    dos.hipo_densidade = payload.hipo_densidade
+    dos.alc_conc_perc = payload.alc_conc_perc
+    dos.alc_densidade = payload.alc_densidade
+    dos.flu_conc_perc = payload.flu_conc_perc
+    dos.flu_densidade = payload.flu_densidade
 
     dos.pac_100_ml = pac["c100"]
     dos.pac_10_ml = pac["c10"]

@@ -2,9 +2,11 @@ import { ReactNode } from 'react'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { AuthProvider, useAuth } from './auth/AuthContext'
 import Layout from './components/Layout'
+import Contrato from './pages/Contrato'
 import Dashboard from './pages/Dashboard'
 import EnsaioJarTest from './pages/EnsaioJarTest'
 import Login from './pages/Login'
+import Perfil from './pages/Perfil'
 import Plano from './pages/Plano'
 import ProjetoForm from './pages/ProjetoForm'
 import Registrar from './pages/Registrar'
@@ -12,7 +14,7 @@ import Relatorio from './pages/Relatorio'
 import VerificarEmail from './pages/VerificarEmail'
 import { ThemeProvider } from './theme/ThemeContext'
 
-function Protected({ children }: { children: ReactNode }) {
+function Protected({ children, requireComplete = true }: { children: ReactNode; requireComplete?: boolean }) {
   const { user, loading } = useAuth()
   if (loading) {
     return (
@@ -23,6 +25,7 @@ function Protected({ children }: { children: ReactNode }) {
     )
   }
   if (!user) return <Navigate to="/login" replace />
+  if (requireComplete && !user.perfil_completo) return <Navigate to="/perfil" replace />
   return <>{children}</>
 }
 
@@ -37,6 +40,22 @@ export default function App() {
             <Route path="/verificar-email" element={<VerificarEmail />} />
 
             <Route element={<Layout />}>
+              <Route
+                path="/perfil"
+                element={
+                  <Protected requireComplete={false}>
+                    <Perfil />
+                  </Protected>
+                }
+              />
+              <Route
+                path="/contrato"
+                element={
+                  <Protected requireComplete={false}>
+                    <Contrato />
+                  </Protected>
+                }
+              />
               <Route
                 path="/"
                 element={

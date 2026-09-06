@@ -7,6 +7,7 @@ from sqlalchemy.orm import Session
 
 from app.core.security import get_current_user
 from app.db.session import get_db
+from app.models.dosagem import DosagensPlanta
 from app.models.ensaio import AguaBruta, ResultadoJarro
 from app.models.projeto import Projeto
 from app.models.user import User
@@ -17,7 +18,7 @@ from app.schemas.ensaio import (
     ResultadoJarroCreate,
     ResultadoJarroOut,
 )
-from app.services.calculos import avaliar_jarro
+from app.services.calculos import avaliar_jarro, ml_jarro_para_ppm, ppm_jarro_para_ml
 
 router = APIRouter(prefix="/projetos/{projeto_id}/ensaio", tags=["ensaios"])
 
@@ -67,6 +68,22 @@ def salvar_jarros(
     turbidez_bruta = ab.turbidez if ab else 0.0
     cor_bruta = ab.cor_aparente if ab else 0.0
 
+    dos = db.scalar(select(DosagensPlanta).where(DosagensPlanta.projeto_id == projeto_id))
+    params = {
+        "pac": ((dos.pac_conc_perc or 0) if dos else 0, (dos.pac_densidade or 0) if dos else 0),
+        "hipo": ((dos.hipo_conc_perc or 0) if dos else 0, (dos.hipo_densidade or 0) if dos else 0),
+        "alc": ((dos.alc_conc_perc or 0) if dos else 0, (dos.alc_densidade or 0) if dos else 0),
+        "flu": ((dos.flu_conc_perc or 0) if dos else 0, (dos.flu_densidade or 0) if dos else 0),
+    }
+
+    def _ambas(v_ml, v_ppm, conc, dens):
+        """Completa o par (mL, ppm) a partir do lado informado."""
+        if v_ppm is not None and v_ml is None and conc and dens:
+            v_ml = ppm_jarro_para_ml(v_ppm, conc, dens)
+        elif v_ml is not None and v_ppm is None and conc and dens:
+            v_ppm = ml_jarro_para_ppm(v_ml, conc, dens)
+        return v_ml, v_ppm
+
     # Limpar jarros existentes para salvar nova rodada
     db.execute(delete(ResultadoJarro).where(ResultadoJarro.projeto_id == projeto_id))
 
@@ -82,13 +99,22 @@ def salvar_jarros(
             fluor_final=item.fluor,
         )
 
+        pac_ml, pac_ppm = _ambas(item.dose_pac_ml, item.dose_pac_ppm, *params["pac"])
+        hipo_ml, hipo_ppm = _ambas(item.dose_hipo_ml, item.dose_hipo_ppm, *params["hipo"])
+        alc_ml, alc_ppm = _ambas(item.dose_alc_ml, item.dose_alc_ppm, *params["alc"])
+        flu_ml, flu_ppm = _ambas(item.dose_flu_ml, item.dose_flu_ppm, *params["flu"])
+
         jarro = ResultadoJarro(
             projeto_id=projeto_id,
             numero_jarro=item.numero_jarro,
-            dose_pac_ml=item.dose_pac_ml,
-            dose_hipo_ml=item.dose_hipo_ml,
-            dose_alc_ml=item.dose_alc_ml,
-            dose_flu_ml=item.dose_flu_ml,
+            dose_pac_ml=pac_ml,
+            dose_hipo_ml=hipo_ml,
+            dose_alc_ml=alc_ml,
+            dose_flu_ml=flu_ml,
+            dose_pac_ppm=pac_ppm,
+            dose_hipo_ppm=hipo_ppm,
+            dose_alc_ppm=alc_ppm,
+            dose_flu_ppm=flu_ppm,
             cor_aparente=item.cor_aparente,
             turbidez=item.turbidez,
             ph=item.ph,

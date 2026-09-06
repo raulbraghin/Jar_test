@@ -32,7 +32,7 @@ export default function Relatorio() {
 
     const linhas = [
       '==================================================================',
-      '       RELATÓRIO TÉCNICO DE ENSAIO DE JAR TEST - AUTOMAÇÃO RJOS',
+      '       RELATÓRIO TÉCNICO DE ENSAIO - JAR-TEST DIGITAL',
       '==================================================================',
       `Projeto: ${p.nome_projeto}`,
       `Cliente: ${p.cliente || 'Não informado'}`,
@@ -48,10 +48,11 @@ export default function Relatorio() {
       `Volume do Decantador: ${conf?.vol_dec_unit_m3.toFixed(2) || '—'} m³`,
       '',
       '--- DOSAGENS EM ESCALA REAL (PLANTA) ---',
-      `PAC: ${dos?.dosagem_pac_ml_min || 0} ml/min`,
-      `Hipoclorito: ${dos?.dosagem_hipo_ml_min || 0} ml/min`,
-      `Alcalinizante: ${dos?.dosagem_alc_ml_min || 0} ml/min`,
-      `Fluoreto: ${dos?.dosagem_flu_ml_min || 0} ml/min`,
+      `Unidade do projeto: ${dos?.unidade === 'ppm' ? 'ppm (mg/L)' : 'mL/min'}`,
+      `PAC: ${dos?.unidade === 'ppm' ? `${dos?.dosagem_pac_ppm || 0} ppm` : `${dos?.dosagem_pac_ml_min || 0} ml/min`}`,
+      `Hipoclorito: ${dos?.unidade === 'ppm' ? `${dos?.dosagem_hipo_ppm || 0} ppm` : `${dos?.dosagem_hipo_ml_min || 0} ml/min`}`,
+      `Alcalinizante: ${dos?.unidade === 'ppm' ? `${dos?.dosagem_alc_ppm || 0} ppm` : `${dos?.dosagem_alc_ml_min || 0} ml/min`}`,
+      `Fluoreto: ${dos?.unidade === 'ppm' ? `${dos?.dosagem_flu_ppm || 0} ppm` : `${dos?.dosagem_flu_ml_min || 0} ml/min`}`,
       '',
       '--- DOSAGENS PARA JARRO DE 2L NO JAR TEST ---',
       `PAC: Puro = ${dos?.pac?.c100.toFixed(4)} mL | 10% = ${dos?.pac?.c10.toFixed(3)} mL | 1% = ${dos?.pac?.c1.toFixed(2)} mL`,
@@ -68,13 +69,15 @@ export default function Relatorio() {
       '',
       '--- RESULTADOS DOS JARROS ---',
       ...relatorio.jarros.map(
-        (j) =>
-          `Jarro ${j.numero_jarro} [Dose PAC: ${j.dose_pac_ml} mL]: Cor=${j.cor_aparente} uH | Turb=${j.turbidez} uT | pH=${j.ph} | Cloro=${j.cloro_residual} mg/L | Flúor=${j.fluor} mg/L | Cond=${j.condutividade} µS/cm | Rem. Turb=${j.remocao_turbidez_perc}% ${j.jarro_otimo ? '★ (ÓTIMO)' : ''}`,
+        (j) => {
+          const doseTxt = dos?.unidade === 'ppm' ? `Dose PAC: ${j.dose_pac_ppm ?? '—'} ppm` : `Dose PAC: ${j.dose_pac_ml} mL`
+          return `Jarro ${j.numero_jarro} [${doseTxt}]: Cor=${j.cor_aparente} uH | Turb=${j.turbidez} uT | pH=${j.ph} | Cloro=${j.cloro_residual} mg/L | Flúor=${j.fluor} mg/L | Cond=${j.condutividade} µS/cm | Rem. Turb=${j.remocao_turbidez_perc}% ${j.jarro_otimo ? '★ (ÓTIMO)' : ''}`
+        },
       ),
       '',
       '--- RECOMENDAÇÃO OPERACIONAL ---',
       otimo
-        ? `Jarro Ótimo: Jarro ${otimo.numero_jarro} com ${otimo.dose_pac_ml} mL de dose (Remoção de Turbidez: ${otimo.remocao_turbidez}% e Cor: ${otimo.remocao_cor}%)`
+        ? `Jarro Ótimo: Jarro ${otimo.numero_jarro} com ${dos?.unidade === 'ppm' ? `${otimo.dose_pac_ppm ?? '—'} ppm` : `${otimo.dose_pac_ml} mL`} de dose (Remoção de Turbidez: ${otimo.remocao_turbidez}% e Cor: ${otimo.remocao_cor}%)`
         : 'Nenhum jarro ótimo definido.',
       '',
       `Norma: ${relatorio.norma_referencia}`,
@@ -150,7 +153,7 @@ export default function Relatorio() {
                 RELATÓRIO TÉCNICO DE JAR TEST
               </h1>
               <p className="text-xs text-muted">
-                Automação RJOS &bull; Ensaios de Tratabilidade e Otimização de Coagulação
+                Jar-Test Digital &bull; Ensaios de Tratabilidade e Otimização de Coagulação
               </p>
             </div>
           </div>
@@ -217,7 +220,7 @@ export default function Relatorio() {
               <thead>
                 <tr className="bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700">
                   <th className="p-2.5 font-bold">Produto Químico</th>
-                  <th className="p-2.5 font-bold">Vazão Planta (ml/min)</th>
+                  <th className="p-2.5 font-bold">Dose Planta ({dosagens_planta?.unidade === 'ppm' ? 'ppm' : 'ml/min'})</th>
                   <th className="p-2.5 font-bold">Dose 100% (mL)</th>
                   <th className="p-2.5 font-bold text-cyan-700 dark:text-cyan-300">Dose Solução 10% (mL)</th>
                   <th className="p-2.5 font-bold">Dose Solução 1% (mL)</th>
@@ -226,28 +229,28 @@ export default function Relatorio() {
               <tbody className="divide-y divide-slate-200 dark:divide-slate-800">
                 <tr>
                   <td className="p-2.5 font-semibold">PAC (Coagulante)</td>
-                  <td className="p-2.5">{dosagens_planta?.dosagem_pac_ml_min || 0} ml/min</td>
+                  <td className="p-2.5">{dosagens_planta?.unidade === 'ppm' ? `${dosagens_planta?.dosagem_pac_ppm || 0} ppm` : `${dosagens_planta?.dosagem_pac_ml_min || 0} ml/min`}</td>
                   <td className="p-2.5">{dosagens_planta?.pac?.c100.toFixed(4) || '—'} mL</td>
                   <td className="p-2.5 font-bold text-cyan-700 dark:text-cyan-300">{dosagens_planta?.pac?.c10.toFixed(3) || '—'} mL</td>
                   <td className="p-2.5">{dosagens_planta?.pac?.c1.toFixed(2) || '—'} mL</td>
                 </tr>
                 <tr>
                   <td className="p-2.5 font-semibold">Hipoclorito (Pré-Cloração)</td>
-                  <td className="p-2.5">{dosagens_planta?.dosagem_hipo_ml_min || 0} ml/min</td>
+                  <td className="p-2.5">{dosagens_planta?.unidade === 'ppm' ? `${dosagens_planta?.dosagem_hipo_ppm || 0} ppm` : `${dosagens_planta?.dosagem_hipo_ml_min || 0} ml/min`}</td>
                   <td className="p-2.5">{dosagens_planta?.hipo?.c100.toFixed(4) || '—'} mL</td>
                   <td className="p-2.5 font-bold text-cyan-700 dark:text-cyan-300">{dosagens_planta?.hipo?.c10.toFixed(3) || '—'} mL</td>
                   <td className="p-2.5">{dosagens_planta?.hipo?.c1.toFixed(2) || '—'} mL</td>
                 </tr>
                 <tr>
                   <td className="p-2.5 font-semibold">Alcalinizante</td>
-                  <td className="p-2.5">{dosagens_planta?.dosagem_alc_ml_min || 0} ml/min</td>
+                  <td className="p-2.5">{dosagens_planta?.unidade === 'ppm' ? `${dosagens_planta?.dosagem_alc_ppm || 0} ppm` : `${dosagens_planta?.dosagem_alc_ml_min || 0} ml/min`}</td>
                   <td className="p-2.5">{dosagens_planta?.alc?.c100.toFixed(4) || '—'} mL</td>
                   <td className="p-2.5 font-bold text-cyan-700 dark:text-cyan-300">{dosagens_planta?.alc?.c10.toFixed(3) || '—'} mL</td>
                   <td className="p-2.5">{dosagens_planta?.alc?.c1.toFixed(2) || '—'} mL</td>
                 </tr>
                 <tr>
                   <td className="p-2.5 font-semibold">Ácido Fluorsilíssico</td>
-                  <td className="p-2.5">{dosagens_planta?.dosagem_flu_ml_min || 0} ml/min</td>
+                  <td className="p-2.5">{dosagens_planta?.unidade === 'ppm' ? `${dosagens_planta?.dosagem_flu_ppm || 0} ppm` : `${dosagens_planta?.dosagem_flu_ml_min || 0} ml/min`}</td>
                   <td className="p-2.5">{dosagens_planta?.flu?.c100.toFixed(4) || '—'} mL</td>
                   <td className="p-2.5 font-bold text-cyan-700 dark:text-cyan-300">{dosagens_planta?.flu?.c10.toFixed(3) || '—'} mL</td>
                   <td className="p-2.5">{dosagens_planta?.flu?.c1.toFixed(2) || '—'} mL</td>
@@ -299,9 +302,9 @@ export default function Relatorio() {
               <thead>
                 <tr className="bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700">
                   <th className="p-2 font-bold">Jarro</th>
-                  <th className="p-2 font-bold">Coagulante (mL)</th>
-                  <th className="p-2 font-bold">Alcalinizante (mL)</th>
-                  <th className="p-2 font-bold">Oxidante (mL)</th>
+                  <th className="p-2 font-bold">Coagulante ({dosagens_planta?.unidade === 'ppm' ? 'ppm' : 'mL'})</th>
+                  <th className="p-2 font-bold">Alcalinizante ({dosagens_planta?.unidade === 'ppm' ? 'ppm' : 'mL'})</th>
+                  <th className="p-2 font-bold">Oxidante ({dosagens_planta?.unidade === 'ppm' ? 'ppm' : 'mL'})</th>
                   <th className="p-2 font-bold">Cor (uH)</th>
                   <th className="p-2 font-bold">Turbidez (uT)</th>
                   <th className="p-2 font-bold">pH</th>
@@ -322,9 +325,9 @@ export default function Relatorio() {
                     <td className="p-2 font-bold">
                       Jarro {j.numero_jarro} {j.jarro_otimo && '★'}
                     </td>
-                    <td className="p-2">{j.dose_pac_ml ?? '—'}</td>
-                    <td className="p-2">{j.dose_alc_ml ?? '—'}</td>
-                    <td className="p-2">{j.dose_hipo_ml ?? '—'}</td>
+                    <td className="p-2">{dosagens_planta?.unidade === 'ppm' ? (j.dose_pac_ppm ?? '—') : (j.dose_pac_ml ?? '—')}</td>
+                    <td className="p-2">{dosagens_planta?.unidade === 'ppm' ? (j.dose_alc_ppm ?? '—') : (j.dose_alc_ml ?? '—')}</td>
+                    <td className="p-2">{dosagens_planta?.unidade === 'ppm' ? (j.dose_hipo_ppm ?? '—') : (j.dose_hipo_ml ?? '—')}</td>
                     <td className="p-2">{j.cor_aparente}</td>
                     <td className="p-2">{j.turbidez}</td>
                     <td className="p-2">{j.ph}</td>
@@ -361,7 +364,7 @@ export default function Relatorio() {
             </h3>
             <p className="text-slate-700 dark:text-slate-300">
               O <b>Jarro {jarro_otimo.numero_jarro}</b> apresentou o melhor desempenho operacional com dosagem de{' '}
-              <b>{jarro_otimo.dose_pac_ml} mL</b> de solução de PAC, atingindo turbidez residual de{' '}
+              <b>{dosagens_planta?.unidade === 'ppm' ? `${jarro_otimo.dose_pac_ppm ?? '—'} ppm` : `${jarro_otimo.dose_pac_ml} mL`}</b> de solução de PAC, atingindo turbidez residual de{' '}
               <b>{jarro_otimo.turbidez_final} uT</b> (remoção de <b>{jarro_otimo.remocao_turbidez}%</b>) e cor aparente de{' '}
               <b>{jarro_otimo.cor_final} uH</b> (remoção de <b>{jarro_otimo.remocao_cor}%</b>), atendendo plenamente aos
               limites preconizados pela <b>{relatorio.norma_referencia}</b>.

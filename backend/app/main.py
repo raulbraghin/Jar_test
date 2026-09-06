@@ -1,4 +1,9 @@
 from contextlib import asynccontextmanager
+import logging
+import os
+
+from alembic import command
+from alembic.config import Config as AlembicConfig
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -12,18 +17,47 @@ from app.api.v1 import (
 )
 from app.core.config import settings
 from app.core.security import hash_password
-from app.db.base import Base
-from app.db.engine import engine
 from app.db.session import SessionLocal
 from app.models.user import User
 
 API_PREFIX = "/api/v1"
+logger = logging.getLogger(__name__)
+
+
+def _run_alembic_upgrade() -> None:
+    """Aplica migrações Alembic até a head no startup."""
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    ini_path = os.path.join(base_dir, "alembic.ini")
+    cfg = AlembicConfig(ini_path)
+    cfg.set_main_option("sqlalchemy.url", settings.DATABASE_URL)
+    logger.info("Aplicando migrações Alembic...")
+    command.upgrade(cfg, "head")
+    logger.info("Migrações aplicadas.")
+
+
+def _validate_security_settings() -> None:
+    """Fail-fast de segredos no startup (não valida no import para não quebrar pytest)."""
+    if not settings.SECRET_KEY or len(settings.SECRET_KEY) < 32:
+        raise RuntimeError(
+            "SECRET_KEY ausente ou fraca (>=32 chars). Defina no .env (ver pass_local.txt / .env.example)."
+        )
+    if "*" in settings.CORS_ORIGINS:
+        logger.warning("CORS_ORIGINS contém '*': valor ignorado (incompatível com allow_credentials).")
+    if not settings.CPF_KEY:
+        logger.warning("CPF_KEY vazia: CPF será cifrado com chave derivada de SECRET_KEY (ok para dev; em prod defina CPF_KEY própria).")
+
+
+def _build_allowed_origins() -> list[str]:
+    origins = [o for o in settings.CORS_ORIGINS if o and o != "*"]
+    if settings.FRONTEND_URL and settings.FRONTEND_URL not in origins:
+        origins.append(settings.FRONTEND_URL)
+    return origins
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Criação das tabelas do Jar Test com prefixo jt_*
-    Base.metadata.create_all(bind=engine)
+    _validate_security_settings()
+    _run_alembic_upgrade()
 
     # Seed inicial do admin se configurado
     if settings.ADMIN_EMAIL and settings.ADMIN_PASSWORD:
@@ -38,6 +72,7 @@ async def lifespan(app: FastAPI):
                     role="admin",
                     email_verificado=True,
                     plano_sempre=True,
+                    perfil_completo=True,
                 )
                 db.add(novo_admin)
                 db.commit()
@@ -48,7 +83,7 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(
-    title="Jar Test API — Cálculo de Dosagem e Ensaios Laboratoriais",
+    title="Jar-Test Digital API — Cálculo de Dosagem e Ensaios Laboratoriais",
     description=(
         "API para cálculo de dosagens e diluições de produtos químicos, "
         "dimensionamento de tempos de floculação e decantação, registro físico-químico "
@@ -60,7 +95,7 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.CORS_ORIGINS,
+    allow_origins=_build_allowed_origins(),
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -76,4 +111,4 @@ app.include_router(relatorio.router, prefix=API_PREFIX)
 
 @app.get("/health")
 def health():
-    return {"status": "ok", "app": "Jar Test API"}
+    return {"status": "ok", "app": "Jar-Test Digital API"}

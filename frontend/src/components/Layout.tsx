@@ -10,7 +10,7 @@ export default function Layout() {
       </main>
       <footer className="border-t border-slate-200 dark:border-slate-800 py-6 text-center text-xs text-muted no-print">
         <div className="max-w-7xl mx-auto px-4">
-          <strong>Automação RJOS</strong> &bull; Jar Test v2.0 &bull; Em conformidade com a Portaria GM/MS nº 888/2021
+          <strong>Jar-Test Digital</strong> &bull; Plataforma de Ensaios de Tratabilidade &bull; Em conformidade com a Portaria GM/MS nº 888/2021
         </div>
       </footer>
     </div>

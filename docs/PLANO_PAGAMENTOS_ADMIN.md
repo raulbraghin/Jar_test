@@ -2,7 +2,7 @@
 
 > **Status:** 📋 Aguardando aprovação da equipe  
 > **Data de elaboração:** 2026-09-05  
-> **Autor:** Raul B. / Automação RJOS  
+> **Autor:** Raul B. — Jar-Test Digital
 
 Implementar o sistema de pagamento e a **tela completa de administração** no **Jar Test**, espelhando fielmente a arquitetura já existente no **Projeto_ETA**.
 

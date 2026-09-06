@@ -87,6 +87,55 @@ def calcular_diluicoes_jarro_2l(dosagem_ml_min: float, vazao_ls: float) -> dict[
     }
 
 
+def ppm_para_ml_min(ppm: float, vazao_ls: float, conc_perc: float, densidade: float) -> float:
+    """
+    Converte dose em ppm (mg/L de ativo) para vazão da bomba em mL/min de produto comercial.
+
+    ppm (mg/L) x Q (L/s) x 60 = mg/min de ativo.
+    1 mL de produto contém (conc_frac x densidade g/mL x 1000) mg de ativo.
+    => mL/min = ppm x Q x 0.06 / (conc_frac x densidade)
+    """
+    if vazao_ls <= 0 or conc_perc <= 0 or densidade <= 0 or ppm < 0:
+        return 0.0
+    return round((ppm * vazao_ls * 0.06) / ((conc_perc / 100.0) * densidade), 4)
+
+
+def ml_min_para_ppm(ml_min: float, vazao_ls: float, conc_perc: float, densidade: float) -> float:
+    """Conversão inversa: mL/min de produto comercial para ppm (mg/L de ativo)."""
+    if vazao_ls <= 0 or conc_perc <= 0 or densidade <= 0 or ml_min < 0:
+        return 0.0
+    return round((ml_min * (conc_perc / 100.0) * densidade) / (vazao_ls * 0.06), 4)
+
+
+def calcular_diluicoes_jarro_2l_ppm(ppm: float, conc_perc: float, densidade: float) -> dict[str, float]:
+    """
+    Volumes em mL de produto comercial a pipetar num jarro de 2 L
+    a partir da dose em ppm (mg de ativo na água do jarro = ppm x 2 L).
+    """
+    if conc_perc <= 0 or densidade <= 0 or ppm < 0:
+        return {"c100": 0.0, "c10": 0.0, "c1": 0.0}
+    c100 = (ppm * 2.0) / ((conc_perc / 100.0) * densidade * 1000.0)
+    return {
+        "c100": round(c100, 4),
+        "c10": round(c100 * 10.0, 3),
+        "c1": round(c100 * 100.0, 2),
+    }
+
+
+def ppm_jarro_para_ml(ppm: float, conc_perc: float, densidade: float) -> float:
+    """Dose de um jarro (2 L) em ppm -> mL de produto comercial."""
+    if conc_perc <= 0 or densidade <= 0 or ppm is None or ppm < 0:
+        return 0.0
+    return round((ppm * 2.0) / ((conc_perc / 100.0) * densidade * 1000.0), 4)
+
+
+def ml_jarro_para_ppm(ml: float, conc_perc: float, densidade: float) -> float:
+    """Dose de um jarro (2 L) em mL de produto comercial -> ppm."""
+    if conc_perc <= 0 or densidade <= 0 or ml is None or ml < 0:
+        return 0.0
+    return round((ml * (conc_perc / 100.0) * densidade * 1000.0) / 2.0, 4)
+
+
 def avaliar_jarro(
     turbidez_bruta: float,
     cor_bruta: float,

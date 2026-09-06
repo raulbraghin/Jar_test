@@ -27,7 +27,7 @@ export default function Navbar() {
             />
             <div>
               <span className="text-lg font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
-                Jar Test
+                Jar-Test Digital
                 <span className="text-xs bg-cyan-100 text-cyan-800 dark:bg-cyan-900/50 dark:text-cyan-300 font-semibold px-2 py-0.5 rounded">
                   v2.0
                 </span>
@@ -51,6 +51,12 @@ export default function Navbar() {
                 className="text-slate-600 hover:text-cyan-600 dark:text-slate-300 dark:hover:text-cyan-400 transition-colors"
               >
                 + Novo Ensaio
+              </Link>
+              <Link
+                to="/contrato"
+                className="text-slate-600 hover:text-cyan-600 dark:text-slate-300 dark:hover:text-cyan-400 transition-colors"
+              >
+                Contrato
               </Link>
               <Link
                 to="/plano"
@@ -93,10 +99,13 @@ export default function Navbar() {
             <div className="flex items-center gap-3">
               <div className="hidden sm:block text-right">
                 <div className="text-sm font-semibold text-slate-800 dark:text-slate-200">
-                  {user.nome}
+                  {user.nome}{user.sobrenome ? ` ${user.sobrenome}` : ''}
                 </div>
                 <div className="text-xs text-muted">{user.email}</div>
               </div>
+              <Link to="/perfil" className="btn btn-outline text-xs py-1.5 px-3">
+                Perfil
+              </Link>
               <button
                 onClick={handleLogout}
                 className="btn btn-outline text-xs py-1.5 px-3"

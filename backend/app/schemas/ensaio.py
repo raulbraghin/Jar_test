@@ -32,6 +32,10 @@ class ResultadoJarroCreate(BaseModel):
     dose_hipo_ml: Optional[float] = Field(None, ge=0, description="Dose de Hipoclorito aplicada (mL)")
     dose_alc_ml: Optional[float] = Field(None, ge=0, description="Dose de Alcalinizante aplicada (mL)")
     dose_flu_ml: Optional[float] = Field(None, ge=0, description="Dose de Flúor aplicada (mL)")
+    dose_pac_ppm: Optional[float] = Field(None, ge=0, description="Dose de PAC aplicada (ppm)")
+    dose_hipo_ppm: Optional[float] = Field(None, ge=0, description="Dose de Hipoclorito aplicada (ppm)")
+    dose_alc_ppm: Optional[float] = Field(None, ge=0, description="Dose de Alcalinizante aplicada (ppm)")
+    dose_flu_ppm: Optional[float] = Field(None, ge=0, description="Dose de Flúor aplicada (ppm)")
 
     cor_aparente: float = Field(..., ge=0, description="Cor aparente final (uH)")
     turbidez: float = Field(..., ge=0, description="Turbidez final (uT / NTU)")
@@ -56,6 +60,10 @@ class ResultadoJarroOut(BaseModel):
     dose_hipo_ml: Optional[float] = None
     dose_alc_ml: Optional[float] = None
     dose_flu_ml: Optional[float] = None
+    dose_pac_ppm: Optional[float] = None
+    dose_hipo_ppm: Optional[float] = None
+    dose_alc_ppm: Optional[float] = None
+    dose_flu_ppm: Optional[float] = None
 
     cor_aparente: float
     turbidez: float

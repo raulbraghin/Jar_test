@@ -1,4 +1,4 @@
-# Jar Test v2.0 — Cálculo de Dosagem, Diluições e Ensaios de Tratabilidade
+# Jar-Test Digital v2.0 — Cálculo de Dosagem, Diluições e Ensaios de Tratabilidade
 
 Sistema completo para determinação de dosagens de produtos químicos (PAC, Hipoclorito, Alcalinizante e Fluoreto), dimensionamento hidráulico de tempos de floculação e decantação (ETA Modular e Torrezan), controle analítico de parâmetros físico-químicos da água bruta e dos jarros, e emissão de relatórios executivos de tratabilidade conforme a **Portaria GM/MS nº 888/2021**.
 
@@ -24,8 +24,11 @@ O projeto foi construído espelhando fielmente o padrão de arquitetura, identid
    - Identificação e recomendação do **Jarro Ótimo** em conformidade com o padrão de potabilidade.
 
 4. **Autenticação Segura & E-mail de Confirmação**:
-   - Cadastro de usuários com envio automático de token de verificação via Gmail SMTP (`sidecc.r.transmissao@gmail.com`).
+   - Cadastro de usuários com envio automático de token de verificação via SMTP configurável (ver `.env.example`).
    - Autenticação via JWT (Access + Refresh Token) com interceptores no frontend.
+   - Após o primeiro login, o usuário completa o perfil obrigatório (nome, sobrenome, e-mail, CPF) + dados opcionais (telefone, empresa/faculdade, formação, cargo, endereço).
+   - CPF armazenado criptografado (Fernet/AES) com hash de unicidade. Ver `CPF_KEY` abaixo.
+   - Contrato de licença disponível após login em `/contrato` (endpoint autenticado `GET /api/v1/auth/contrato`) com registro de aceite.
    - Histórico e Dashboard por usuário (projetos e ensaios salvos).
    - Estrutura pronta para planos pagos futuros (mensal, trimestral, anual).
 
@@ -89,7 +92,58 @@ Acesse no navegador:
 
 ## 🛠️ Stack Tecnológica
 
-- **Backend**: Python 3.12/3.13, FastAPI, SQLAlchemy 2.0, Psycopg 3, Pydantic v2, PyJWT, Bcrypt, Pytest.
+- **Backend**: Python 3.12/3.13, FastAPI, SQLAlchemy 2.0, Psycopg 3, Pydantic v2, PyJWT, Bcrypt, Cryptography (Fernet), Alembic, Pytest.
 - **Frontend**: React 18, TypeScript, Vite, Tailwind CSS (Slate + Cyan), Axios, React Router Dom v6.
 - **Banco de Dados**: PostgreSQL 16.
 - **Infraestrutura**: Docker & Docker Compose com Nginx Alpine.
+
+---
+
+## 🔑 Variáveis de Ambiente
+
+Copie `.env.example` para `.env` e preencha. O `docker-compose.yml` exige via `${VAR:?...}`:
+
+```env
+SECRET_KEY=sua-chave-super-secreta
+CPF_KEY=  # opcional: chave Fernet base64 32 bytes. Se vazia, derivada de SECRET_KEY
+# Gerar com: python -c "from cryptography.fernet import Fernet; print(Fernet.generate_key().decode())"
+
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=seu_email@gmail.com
+SMTP_PASSWORD=sua-senha-de-app
+SMTP_FROM=seu_email@gmail.com
+
+ADMIN_EMAIL=admin@exemplo.com
+ADMIN_PASSWORD=sua-senha-admin
+```
+
+> Nunca commite o `.env`. O `.env.example` não contém segredos reais.
+
+---
+
+## 🗃️ Migrações do Banco (Alembic)
+
+O backend usa Alembic. No startup (`app/main.py`), roda automaticamente `alembic upgrade head`.
+
+Estrutura:
+- `backend/alembic.ini` + `backend/alembic/env.py`
+- `backend/alembic/versions/0001_expand_user_profile.py` — adiciona à `jt_users`: `sobrenome`, `cpf_hash` (único), `telefone`, `empresa`, `formacao`, `cargo`, endereço (`logradouro`, `numero`, `complemento`, `bairro`, `cidade`, `uf`, `cep`), `perfil_completo`, `contrato_aceito_em`.
+
+Comandos úteis (dentro de `backend/`, com `DATABASE_URL` válida):
+
+```bash
+pip install -r requirements.txt
+alembic upgrade head          # aplicar
+alembic downgrade -1          # reverter última
+alembic revision --autogenerate -m "descricao"  # nova migração após alterar models
+```
+
+### Endpoints de perfil/contrato
+
+- `GET /api/v1/auth/me` — dados do usuário logado (CPF mascarado em `cpf_masked`)
+- `PUT /api/v1/auth/me/perfil` — completa perfil (nome, sobrenome, email, cpf obrigatórios)
+- `POST /api/v1/auth/me/contrato` — `{ "aceito": true }` registra aceite
+- `GET /api/v1/auth/contrato` — retorna o `Contrato_saas.txt` (requer login)
+
+Frontend: `/perfil` (bloqueia demais rotas até `perfil_completo=true`), `/contrato` (leitura + aceite + impressão/PDF via `window.print()`).

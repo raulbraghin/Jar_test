@@ -23,7 +23,7 @@ export default function Login() {
     try {
       const resp = await api.post<TokenResponse>('/auth/login', { email, senha })
       login(resp.data)
-      navigate('/')
+      navigate(resp.data.user.perfil_completo ? '/' : '/perfil')
     } catch (err: any) {
       const msg = err.response?.data?.detail || 'Falha ao autenticar. Verifique suas credenciais.'
       setErro(msg)
@@ -59,7 +59,7 @@ export default function Login() {
             }}
           />
           <h2 className="mt-4 text-2xl font-bold text-slate-900 dark:text-slate-100">
-            Acessar o Jar Test
+            Jar-Test Digital
           </h2>
           <p className="mt-1 text-sm text-muted">
             Cálculo de dosagens, diluições e controle físico-químico
