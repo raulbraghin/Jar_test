@@ -240,15 +240,22 @@ def aceitar_contrato(
     return MensagemResponse(mensagem="Contrato aceito e registrado")
 
 
-_CONTRATO_PATH = Path(__file__).resolve().parents[4] / "Contrato_saas.txt"
+def _localizar_contrato() -> Path | None:
+    # Local: raiz do repo (parents[4]); Docker: montado em /app (parents[3]).
+    for base in (Path(__file__).resolve().parents[4], Path(__file__).resolve().parents[3]):
+        candidato = base / "Contrato_saas.txt"
+        if candidato.exists():
+            return candidato
+    return None
 
 
 @router.get("/contrato")
 def obter_contrato(current_user: User = Depends(get_current_user)):
     """Retorna o contrato como texto (uso autenticado)."""
-    if not _CONTRATO_PATH.exists():
+    caminho = _localizar_contrato()
+    if not caminho:
         raise HTTPException(status_code=404, detail="Contrato não encontrado")
     return PlainTextResponse(
-        _CONTRATO_PATH.read_text(encoding="utf-8"),
+        caminho.read_text(encoding="utf-8"),
         media_type="text/plain; charset=utf-8",
     )
