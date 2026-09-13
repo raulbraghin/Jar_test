@@ -64,3 +64,36 @@ def enviar_verificacao_email(para: str, link: str) -> None:
     </div>
     """
     enviar_email(para, assunto, html)
+
+
+def enviar_redefinicao_senha(para: str, link: str) -> None:
+    assunto = "Redefinição de senha — Jar-Test Digital"
+    html = f"""
+    <div style="font-family:Arial,sans-serif;max-width:500px;margin:0 auto;background:#f8fafc;padding:24px;border-radius:8px;border:1px solid #e2e8f0;">
+      <h2 style="color:#0891b2;margin-top:0;">Jar-Test Digital — Redefinição de Senha</h2>
+      <p style="color:#334155;font-size:15px;line-height:1.5;">
+        Recebemos uma solicitação para redefinir a senha da sua conta no
+        <b>Jar-Test Digital</b>. Clique no botão abaixo para criar uma nova senha:
+      </p>
+      <p style="text-align:center;margin:28px 0;">
+        <a href="{link}"
+           style="display:inline-block;background:#0891b2;color:#ffffff;padding:12px 28px;
+                  border-radius:6px;text-decoration:none;font-weight:bold;font-size:15px;">
+          Redefinir minha senha
+        </a>
+      </p>
+      <p style="color:#64748b;font-size:12px;line-height:1.4;">
+        Se você não solicitou a redefinição de senha, ignore este e-mail.<br>
+        Este link expira em <b>1 hora</b>.
+      </p>
+      <p style="color:#64748b;font-size:12px;line-height:1.4;">
+        Se o botão não funcionar, copie e cole o link no seu navegador:<br>
+        <a href="{link}" style="color:#0891b2;">{link}</a>
+      </p>
+      <hr style="border:none;border-top:1px solid #e2e8f0;margin:20px 0;">
+      <p style="color:#94a3b8;font-size:11px;text-align:center;">
+        Jar-Test Digital &bull; Plataforma de Ensaios de Tratabilidade
+      </p>
+    </div>
+    """
+    enviar_email(para, assunto, html)

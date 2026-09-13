@@ -60,7 +60,12 @@ def criar_preferencia(tipo: str, user_id: str) -> dict[str, str]:
         raise MercadoPagoError(f"Falha ao criar preferência no MercadoPago: {e}") from e
 
     dados = resp.json()
-    init_point = dados.get("init_point") or dados.get("sandbox_init_point")
+    # Com credencial de TESTE (TEST-...) o checkout precisa do sandbox_init_point;
+    # com credencial de produção (APP_USR-...) usa o init_point.
+    if _token().startswith("TEST"):
+        init_point = dados.get("sandbox_init_point") or dados.get("init_point")
+    else:
+        init_point = dados.get("init_point") or dados.get("sandbox_init_point")
     if not init_point or not dados.get("id"):
         raise MercadoPagoError("MercadoPago não retornou init_point para a preferência")
     return {"id": dados["id"], "init_point": init_point}

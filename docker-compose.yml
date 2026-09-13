@@ -7,8 +7,6 @@ services:
       POSTGRES_USER: ${POSTGRES_USER:-eta_user}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-eta_password_secure}
       POSTGRES_DB: ${POSTGRES_DB:-eta_db}
-    ports:
-      - "${POSTGRES_PORT:-5433}:5432"
     volumes:
       - jartest_postgres_data:/var/lib/postgresql/data
     healthcheck:
@@ -46,8 +44,6 @@ services:
       PLANO_MENSAL_PRECO: ${PLANO_MENSAL_PRECO:-4.99}
       PLANO_TRIMESTRAL_PRECO: ${PLANO_TRIMESTRAL_PRECO:-14.99}
       PLANO_ANUAL_PRECO: ${PLANO_ANUAL_PRECO:-49.99}
-    ports:
-      - "${BACKEND_PORT:-8001}:8000"
     volumes:
       # Contrato exibido em GET /api/v1/auth/contrato (fonte única na raiz do repo)
       - ./Contrato_saas.txt:/app/Contrato_saas.txt:ro
@@ -59,10 +55,15 @@ services:
     build: ./frontend
     container_name: jartest_react_app
     restart: always
-    ports:
-      - "${FRONTEND_PORT:-8002}:80"
+    networks:
+      - default
+      - rbr-net
     depends_on:
       - backend
+
+networks:
+  rbr-net:
+    external: true
 
 volumes:
   jartest_postgres_data:

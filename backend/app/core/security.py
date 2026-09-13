@@ -94,6 +94,17 @@ def decode_email_verification_token(token: str) -> str:
     return payload["sub"]
 
 
+def create_password_reset_token(email: str) -> str:
+    return _create_token(email, timedelta(hours=1), "reset_senha")
+
+
+def decode_password_reset_token(token: str) -> str:
+    payload = decode_token(token)
+    if payload.get("type") != "reset_senha" or not payload.get("sub"):
+        raise jwt.PyJWTError("token de redefinição inválido")
+    return payload["sub"]
+
+
 def decode_token(token: str) -> dict[str, Any]:
     return jwt.decode(token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])
 
